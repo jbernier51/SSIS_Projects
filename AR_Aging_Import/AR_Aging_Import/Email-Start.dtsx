@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/25/2017 5:27:28 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="HSCUSCHLWS00413"
+  DTS:CreatorName="HARSCO\awisdom"
+  DTS:DTSID="{F01BFC81-FF8F-45DC-9295-56F77E0B5F1D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.92"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Email-Start"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{35B24DE6-D694-4DB1-89F8-795C3946A92D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{7D9D0405-C1D6-4913-A413-E7B2B1FE9081}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Send Start e-Mail"
+          DTS:CreationName="Microsoft.SendMailTask"
+          DTS:Description="Sends an e-mail on successful start of the package"
+          DTS:DTSID="{AA1F9282-2AE6-44D0-9C7A-2ECC32633452}"
+          DTS:ExecutableType="Microsoft.SendMailTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Send Start e-Mail"
+          DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:PropertyExpression
+            DTS:Name="FromLine">@[$Project::SendSuccessEMail_FromLine]</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="MessageSource">@[System::MachineName] + ":" + @[System::PackageName] + ".dtsx started successfully at " +  (DT_STR, 50, 1252) GETDATE()</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="Subject">@[System::MachineName] + ":" + @[System::PackageName] + ".dtsx started successfully"</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="ToLine">@[$Project::SendSuccessEMail_ToLine]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SendMailTask:SendMailTaskData
+              SendMailTask:SMTPServer="{E826453B-5A5C-4217-BE0C-1DF882C1E087}"
+              SendMailTask:From="SSISETLServer@harsco.com"
+              SendMailTask:To="SSISFailure@harsco.com;HSCMetalsBIGroup@harsco.com"
+              SendMailTask:Subject="HSCUSEA2WSDSSIS:Email-Start.dtsx started successfully"
+              SendMailTask:MessageSource="HSCUSEA2WSDSSIS:Email-Start.dtsx started successfully at 2018-04-12 09:49:21.566000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="175,41"
+          Id="Package\Sequence Container\Send Start e-Mail"
+          TopLeft="152,55" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="590,271"
+          Size="590,314"
+          Id="Package\Sequence Container"
+          TopLeft="163,59" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

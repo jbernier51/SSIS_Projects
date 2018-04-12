@@ -1,0 +1,3558 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/25/2014 8:49:04 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="W2K8R2-SQL2K8R2"
+  DTS:CreatorName="W2K8R2-SQL2K8R2\Administrator"
+  DTS:DTSID="{F5B8EAD7-ACCD-438F-8C9F-DD4228681199}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.92"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="StagingOracle-gl_code_combinations"
+  DTS:PackageType="5"
+  DTS:VersionBuild="195"
+  DTS:VersionGUID="{060EA1E8-77F9-4561-87C7-6E74FCA253C2}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HSCPSUP.xxbi.ADO]"
+      DTS:CreationName="ADO.NET:System.Data.OracleClient.OracleConnection, System.Data.OracleClient, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{BE2EE68C-BEA0-4FA9-8CC8-0051FE8C9E6D}"
+      DTS:ObjectName="HSCPSUP.xxbi.ADO">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::OracleConnectionString]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[$Project::OraclePassword]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="UserName">@[$Project::OracleUserName]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=HSCP;User ID=xxbi;Persist Security Info=True;Unicode=True;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABHc0KliAj0SMhp+O0Fc0mwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABlnJOhqpd/C8F9u/+js5B5AAAAAASAAACgAAAAEAAAABygr/mw9/zQxC0U5QZBJhIYAAAA1nEwoi+dwLecCjJQfiv7WgIEcyn8liJTFAAAAIh60xBQfahPGbH/oyacI2mY0sTZ</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="ConfigDB"
+      DTS:CreationName="Microsoft.LogProviderSQLServer"
+      DTS:Description="Writes log entries for events to a SQL Server database"
+      DTS:DTSID="{4663FD1C-E805-40D5-9752-AE828B27EDA2}"
+      DTS:ObjectName="SSIS log provider for SQL Server">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D8B08DEE-948B-4CEF-8A9D-735E3FD5A745}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;Process FAILED &quot; +  (DT_STR, 10, 1252) @[User::RecordCount] + &quot; records processed.&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FailureMessage">
+      <DTS:VariableValue
+        DTS:DataType="8">Process FAILED 0 records processed.</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A9DE8722-1879-4A63-9278-D9BF19082F1C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LastRunDT">
+      <DTS:VariableValue
+        DTS:DataType="7">2/28/2014 12:29:00 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CFF940F9-DA92-42C6-831B-93C30D4F85BA}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LastRunTMST">
+      <DTS:VariableValue
+        DTS:DataType="7">2/28/2014 12:29:15 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B646659A-A5C5-4855-B5AA-4870E1C0E1EC}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LineageID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{ED60924F-C59D-43E3-B2B1-D82555855959}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LineageString">
+      <DTS:VariableValue
+        DTS:DataType="8">/</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{29EA034A-B599-423B-9518-184AF052926F}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LineageTMST">
+      <DTS:VariableValue
+        DTS:DataType="7">2/26/2014 7:41:11 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{60E30B4C-B22E-4B5D-A924-F4E4B7B3A14D}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT GCC.CODE_COMBINATION_ID,&#xA;       GCC.SEGMENT1,&#xA;       GCC.SEGMENT2,&#xA;       GCC.SEGMENT3,&#xA;       GCC.SEGMENT4,&#xA;       GCC.SEGMENT5,&#xA;       GCC.SEGMENT6,&#xA;       GCC.SEGMENT7,&#xA;       GCC.SEGMENT8,&#xA;       SUBSTR (&#xA;          APPS.GL_FLEXFIELDS_PKG.GET_DESCRIPTION_SQL (&#xA;             GCC.CHART_OF_ACCOUNTS_ID,&#xA;             1,&#xA;             GCC.SEGMENT1),&#xA;          1,&#xA;          40)&#xA;          SEGMENT1_DESC,&#xA;       SUBSTR (&#xA;          APPS.GL_FLEXFIELDS_PKG.GET_DESCRIPTION_SQL (&#xA;             GCC.CHART_OF_ACCOUNTS_ID,&#xA;             2,&#xA;             GCC.SEGMENT2),&#xA;          1,&#xA;          40)&#xA;          SEGMENT2_DESC,&#xA;       DECODE (&#xA;          GCC.SEGMENT3,&#xA;          NULL, '',&#xA;          SUBSTR (&#xA;             APPS.GL_FLEXFIELDS_PKG.GET_DESCRIPTION_SQL (&#xA;                GCC.CHART_OF_ACCOUNTS_ID,&#xA;                3,&#xA;                GCC.SEGMENT3),&#xA;             1,&#xA;             40))&#xA;          SEGMENT3_DESC,&#xA;       DECODE (&#xA;          GCC.SEGMENT4,&#xA;          NULL, '',&#xA;          SUBSTR (&#xA;             APPS.GL_FLEXFIELDS_PKG.GET_DESCRIPTION_SQL (&#xA;                GCC.CHART_OF_ACCOUNTS_ID,&#xA;                4,&#xA;                GCC.SEGMENT4),&#xA;             1,&#xA;             40))&#xA;          SEGMENT4_DESC,&#xA;       DECODE (&#xA;          GCC.SEGMENT5,&#xA;          NULL, '',&#xA;          SUBSTR (&#xA;             APPS.GL_FLEXFIELDS_PKG.GET_DESCRIPTION_SQL (&#xA;                GCC.CHART_OF_ACCOUNTS_ID,&#xA;                5,&#xA;                GCC.SEGMENT5),&#xA;             1,&#xA;             40))&#xA;          SEGMENT5_DESC,&#xA;       DECODE (&#xA;          GCC.SEGMENT6,&#xA;          NULL, '',&#xA;          SUBSTR (&#xA;             APPS.GL_FLEXFIELDS_PKG.GET_DESCRIPTION_SQL (&#xA;                GCC.CHART_OF_ACCOUNTS_ID,&#xA;                6,&#xA;                GCC.SEGMENT6),&#xA;             1,&#xA;             40))&#xA;          SEGMENT6_DESC,&#xA;       DECODE (&#xA;          GCC.SEGMENT7,&#xA;          NULL, '',&#xA;          SUBSTR (&#xA;             APPS.GL_FLEXFIELDS_PKG.GET_DESCRIPTION_SQL (&#xA;                GCC.CHART_OF_ACCOUNTS_ID,&#xA;                7,&#xA;                GCC.SEGMENT7),&#xA;             1,&#xA;             40))&#xA;          SEGMENT7_DESC,&#xA;       DECODE (&#xA;          GCC.SEGMENT9,&#xA;          NULL, '',&#xA;          SUBSTR (&#xA;             APPS.GL_FLEXFIELDS_PKG.GET_DESCRIPTION_SQL (&#xA;                GCC.CHART_OF_ACCOUNTS_ID,&#xA;                8,&#xA;                GCC.SEGMENT8),&#xA;             1,&#xA;             40))&#xA;          SEGMENT8_DESC,&#xA;       GCC.CHART_OF_ACCOUNTS_ID CHART_OF_ACCOUNTS_ID,&#xA;       GCC.ACCOUNT_TYPE&#xA;  FROM GL_CODE_COMBINATIONS GCC&#xA;where Last_Update_Date &gt;= to_date(' &quot;+ (DT_WSTR,40) @[User::LastRunTMST] +&quot; ', 'MM/DD/YYYY HH:MI:SS AM')  &quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="OracleSourceQuery">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT GCC.CODE_COMBINATION_ID,
+       GCC.SEGMENT1,
+       GCC.SEGMENT2,
+       GCC.SEGMENT3,
+       GCC.SEGMENT4,
+       GCC.SEGMENT5,
+       GCC.SEGMENT6,
+       GCC.SEGMENT7,
+       GCC.SEGMENT8,
+       SUBSTR (
+          APPS.GL_FLEXFIELDS_PKG.GET_DESCRIPTION_SQL (
+             GCC.CHART_OF_ACCOUNTS_ID,
+             1,
+             GCC.SEGMENT1),
+          1,
+          40)
+          SEGMENT1_DESC,
+       SUBSTR (
+          APPS.GL_FLEXFIELDS_PKG.GET_DESCRIPTION_SQL (
+             GCC.CHART_OF_ACCOUNTS_ID,
+             2,
+             GCC.SEGMENT2),
+          1,
+          40)
+          SEGMENT2_DESC,
+       DECODE (
+          GCC.SEGMENT3,
+          NULL, '',
+          SUBSTR (
+             APPS.GL_FLEXFIELDS_PKG.GET_DESCRIPTION_SQL (
+                GCC.CHART_OF_ACCOUNTS_ID,
+                3,
+                GCC.SEGMENT3),
+             1,
+             40))
+          SEGMENT3_DESC,
+       DECODE (
+          GCC.SEGMENT4,
+          NULL, '',
+          SUBSTR (
+             APPS.GL_FLEXFIELDS_PKG.GET_DESCRIPTION_SQL (
+                GCC.CHART_OF_ACCOUNTS_ID,
+                4,
+                GCC.SEGMENT4),
+             1,
+             40))
+          SEGMENT4_DESC,
+       DECODE (
+          GCC.SEGMENT5,
+          NULL, '',
+          SUBSTR (
+             APPS.GL_FLEXFIELDS_PKG.GET_DESCRIPTION_SQL (
+                GCC.CHART_OF_ACCOUNTS_ID,
+                5,
+                GCC.SEGMENT5),
+             1,
+             40))
+          SEGMENT5_DESC,
+       DECODE (
+          GCC.SEGMENT6,
+          NULL, '',
+          SUBSTR (
+             APPS.GL_FLEXFIELDS_PKG.GET_DESCRIPTION_SQL (
+                GCC.CHART_OF_ACCOUNTS_ID,
+                6,
+                GCC.SEGMENT6),
+             1,
+             40))
+          SEGMENT6_DESC,
+       DECODE (
+          GCC.SEGMENT7,
+          NULL, '',
+          SUBSTR (
+             APPS.GL_FLEXFIELDS_PKG.GET_DESCRIPTION_SQL (
+                GCC.CHART_OF_ACCOUNTS_ID,
+                7,
+                GCC.SEGMENT7),
+             1,
+             40))
+          SEGMENT7_DESC,
+       DECODE (
+          GCC.SEGMENT9,
+          NULL, '',
+          SUBSTR (
+             APPS.GL_FLEXFIELDS_PKG.GET_DESCRIPTION_SQL (
+                GCC.CHART_OF_ACCOUNTS_ID,
+                8,
+                GCC.SEGMENT8),
+             1,
+             40))
+          SEGMENT8_DESC,
+       GCC.CHART_OF_ACCOUNTS_ID CHART_OF_ACCOUNTS_ID,
+       GCC.ACCOUNT_TYPE
+  FROM GL_CODE_COMBINATIONS GCC
+where Last_Update_Date &gt;= to_date(' 2/28/2014 12:29:15 PM ', 'MM/DD/YYYY HH:MI:SS AM')  </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{04A436CD-9A6F-4F26-B86C-3BEB8AA19E3A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D00BB40F-6E28-4E5F-A9C7-4B59EAE6AD2F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="StagingTableName">
+      <DTS:VariableValue
+        DTS:DataType="8">stg.Oracle_GL_Code_Combinations</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{01816444-BB9E-4DDD-A291-D9EB6E6E33D4}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;Process Succeeded - &quot; +  (DT_STR, 10, 1252) @[User::RecordCount] + &quot; rows processed.&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SuccessMessage">
+      <DTS:VariableValue
+        DTS:DataType="8">Process Succeeded - 0 rows processed.</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CCCBE194-B2A0-423F-B5E1-40205C5E16E5}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;TRUNCATE TABLE &quot; +  @[User::StagingTableName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TruncateTableCommand">
+      <DTS:VariableValue
+        DTS:DataType="8">TRUNCATE TABLE stg.Oracle_GL_Code_Combinations</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">2,7,OnError,12,OnTaskFailed</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnTaskFailed"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{4663FD1C-E805-40D5-9752-AE828B27EDA2}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Processing"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{4766A73B-36A3-44A1-9021-416EB8BD5EFB}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Processing">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Data Processing\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:DelayValidation="True"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{DD868020-70BB-4626-89C6-1E7D3EB389BE}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:PropertyExpression
+            DTS:Name="[ADO NET Source].[SqlCommand]">@[User::OracleSourceQuery]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <pipeline
+              BLOBTempStoragePath=""
+              bufferTempStoragePath=""
+              version="1">
+              <components>
+                <component
+                  refId="Package\Data Processing\Data Flow Task\Add Metadata"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Updates column values using expressions"
+                  name="Add Metadata"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Data Processing\Data Flow Task\Add Metadata.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Data Processing\Data Flow Task\Add Metadata.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Data Processing\Data Flow Task\Add Metadata.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\Add Metadata.Outputs[Derived Column Output].Columns[LineageTMST]"
+                          dataType="date"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Data Processing\Data Flow Task\Add Metadata.Outputs[Derived Column Output].Columns[LineageTMST]"
+                          name="LineageTMST"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[System::StartTime]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[System::StartTime]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\Add Metadata.Outputs[Derived Column Output].Columns[UpdatedLineageString]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="128"
+                          lineageId="Package\Data Processing\Data Flow Task\Add Metadata.Outputs[Derived Column Output].Columns[UpdatedLineageString]"
+                          name="UpdatedLineageString"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_STR,128,1252)@[User::LineageString]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_STR,128,1252)@[User::LineageString]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\Add Metadata.Outputs[Derived Column Output].Columns[SourceSystemID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Data Processing\Data Flow Task\Add Metadata.Outputs[Derived Column Output].Columns[SourceSystemID]"
+                          name="SourceSystemID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">27</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">27</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Data Processing\Data Flow Task\Add Metadata.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Data Processing\Data Flow Task\Add Metadata.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\Add Metadata.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Data Processing\Data Flow Task\Add Metadata.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\Add Metadata.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Data Processing\Data Flow Task\Add Metadata.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Data Processing\Data Flow Task\ADO NET Source"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+                  name="ADO NET Source"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement used by the component to extract data."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT GCC.CODE_COMBINATION_ID,
+       GCC.SEGMENT1,
+       GCC.SEGMENT2,
+       GCC.SEGMENT3,
+       GCC.SEGMENT4,
+       GCC.SEGMENT5,
+       GCC.SEGMENT6,
+       GCC.SEGMENT7,
+       GCC.SEGMENT8,
+       SUBSTR (
+          APPS.GL_FLEXFIELDS_PKG.GET_DESCRIPTION_SQL (
+             GCC.CHART_OF_ACCOUNTS_ID,
+             1,
+             GCC.SEGMENT1),
+          1,
+          40)
+          SEGMENT1_DESC,
+       SUBSTR (
+          APPS.GL_FLEXFIELDS_PKG.GET_DESCRIPTION_SQL (
+             GCC.CHART_OF_ACCOUNTS_ID,
+             2,
+             GCC.SEGMENT2),
+          1,
+          40)
+          SEGMENT2_DESC,
+       DECODE (
+          GCC.SEGMENT3,
+          NULL, '',
+          SUBSTR (
+             APPS.GL_FLEXFIELDS_PKG.GET_DESCRIPTION_SQL (
+                GCC.CHART_OF_ACCOUNTS_ID,
+                3,
+                GCC.SEGMENT3),
+             1,
+             40))
+          SEGMENT3_DESC,
+       DECODE (
+          GCC.SEGMENT4,
+          NULL, '',
+          SUBSTR (
+             APPS.GL_FLEXFIELDS_PKG.GET_DESCRIPTION_SQL (
+                GCC.CHART_OF_ACCOUNTS_ID,
+                4,
+                GCC.SEGMENT4),
+             1,
+             40))
+          SEGMENT4_DESC,
+       DECODE (
+          GCC.SEGMENT5,
+          NULL, '',
+          SUBSTR (
+             APPS.GL_FLEXFIELDS_PKG.GET_DESCRIPTION_SQL (
+                GCC.CHART_OF_ACCOUNTS_ID,
+                5,
+                GCC.SEGMENT5),
+             1,
+             40))
+          SEGMENT5_DESC,
+       DECODE (
+          GCC.SEGMENT6,
+          NULL, '',
+          SUBSTR (
+             APPS.GL_FLEXFIELDS_PKG.GET_DESCRIPTION_SQL (
+                GCC.CHART_OF_ACCOUNTS_ID,
+                6,
+                GCC.SEGMENT6),
+             1,
+             40))
+          SEGMENT6_DESC,
+       DECODE (
+          GCC.SEGMENT7,
+          NULL, '',
+          SUBSTR (
+             APPS.GL_FLEXFIELDS_PKG.GET_DESCRIPTION_SQL (
+                GCC.CHART_OF_ACCOUNTS_ID,
+                7,
+                GCC.SEGMENT7),
+             1,
+             40))
+          SEGMENT7_DESC,
+       DECODE (
+          GCC.SEGMENT9,
+          NULL, '',
+          SUBSTR (
+             APPS.GL_FLEXFIELDS_PKG.GET_DESCRIPTION_SQL (
+                GCC.CHART_OF_ACCOUNTS_ID,
+                8,
+                GCC.SEGMENT8),
+             1,
+             40))
+          SEGMENT8_DESC,
+       GCC.CHART_OF_ACCOUNTS_ID CHART_OF_ACCOUNTS_ID,
+       GCC.ACCOUNT_TYPE
+  FROM GL_CODE_COMBINATIONS GCC
+where Last_Update_Date &gt;= to_date(' 2/28/2014 12:29:15 PM ', 'MM/DD/YYYY HH:MI:SS AM')  </property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">30</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                      name="AllowImplicitStringConversion">true</property>
+                    <property
+                      dataType="System.String"
+                      description="The Source database table name."
+                      expressionType="Notify"
+                      name="TableOrViewName"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specify the mode to retrieve external column information"
+                      name="AccessMode"
+                      typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Data Processing\Data Flow Task\ADO NET Source.Connections[IDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[HSCPSUP.xxbi.ADO]"
+                      connectionManagerRefId="Package.ConnectionManagers[HSCPSUP.xxbi.ADO]"
+                      description="Managed connection manager"
+                      name="IDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output]"
+                      name="ADO NET Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[CODE_COMBINATION_ID]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CODE_COMBINATION_ID]"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[CODE_COMBINATION_ID]"
+                          name="CODE_COMBINATION_ID"
+                          precision="15"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT1]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT1]"
+                          length="25"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT1]"
+                          name="SEGMENT1"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT2]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT2]"
+                          length="25"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT2]"
+                          name="SEGMENT2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT3]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT3]"
+                          length="25"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT3]"
+                          name="SEGMENT3"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT4]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT4]"
+                          length="25"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT4]"
+                          name="SEGMENT4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT5]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT5]"
+                          length="25"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT5]"
+                          name="SEGMENT5"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT6]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT6]"
+                          length="25"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT6]"
+                          name="SEGMENT6"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT7]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT7]"
+                          length="25"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT7]"
+                          name="SEGMENT7"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT8]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT8]"
+                          length="25"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT8]"
+                          name="SEGMENT8"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT1_DESC]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT1_DESC]"
+                          length="160"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT1_DESC]"
+                          name="SEGMENT1_DESC"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT2_DESC]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT2_DESC]"
+                          length="160"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT2_DESC]"
+                          name="SEGMENT2_DESC"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT3_DESC]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT3_DESC]"
+                          length="160"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT3_DESC]"
+                          name="SEGMENT3_DESC"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT4_DESC]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT4_DESC]"
+                          length="160"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT4_DESC]"
+                          name="SEGMENT4_DESC"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT5_DESC]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT5_DESC]"
+                          length="160"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT5_DESC]"
+                          name="SEGMENT5_DESC"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT6_DESC]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT6_DESC]"
+                          length="160"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT6_DESC]"
+                          name="SEGMENT6_DESC"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT7_DESC]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT7_DESC]"
+                          length="160"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT7_DESC]"
+                          name="SEGMENT7_DESC"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT8_DESC]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT8_DESC]"
+                          length="160"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT8_DESC]"
+                          name="SEGMENT8_DESC"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[CHART_OF_ACCOUNTS_ID]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CHART_OF_ACCOUNTS_ID]"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[CHART_OF_ACCOUNTS_ID]"
+                          name="CHART_OF_ACCOUNTS_ID"
+                          precision="15"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[ACCOUNT_TYPE]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[ACCOUNT_TYPE]"
+                          length="1"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[ACCOUNT_TYPE]"
+                          name="ACCOUNT_TYPE"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CODE_COMBINATION_ID]"
+                          dataType="numeric"
+                          name="CODE_COMBINATION_ID"
+                          precision="15" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT1]"
+                          dataType="wstr"
+                          length="25"
+                          name="SEGMENT1" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT2]"
+                          dataType="wstr"
+                          length="25"
+                          name="SEGMENT2" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT3]"
+                          dataType="wstr"
+                          length="25"
+                          name="SEGMENT3" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT4]"
+                          dataType="wstr"
+                          length="25"
+                          name="SEGMENT4" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT5]"
+                          dataType="wstr"
+                          length="25"
+                          name="SEGMENT5" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT6]"
+                          dataType="wstr"
+                          length="25"
+                          name="SEGMENT6" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT7]"
+                          dataType="wstr"
+                          length="25"
+                          name="SEGMENT7" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT8]"
+                          dataType="wstr"
+                          length="25"
+                          name="SEGMENT8" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT1_DESC]"
+                          dataType="wstr"
+                          length="160"
+                          name="SEGMENT1_DESC" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT2_DESC]"
+                          dataType="wstr"
+                          length="160"
+                          name="SEGMENT2_DESC" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT3_DESC]"
+                          dataType="wstr"
+                          length="160"
+                          name="SEGMENT3_DESC" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT4_DESC]"
+                          dataType="wstr"
+                          length="160"
+                          name="SEGMENT4_DESC" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT5_DESC]"
+                          dataType="wstr"
+                          length="160"
+                          name="SEGMENT5_DESC" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT6_DESC]"
+                          dataType="wstr"
+                          length="160"
+                          name="SEGMENT6_DESC" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT7_DESC]"
+                          dataType="wstr"
+                          length="160"
+                          name="SEGMENT7_DESC" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SEGMENT8_DESC]"
+                          dataType="wstr"
+                          length="160"
+                          name="SEGMENT8_DESC" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CHART_OF_ACCOUNTS_ID]"
+                          dataType="numeric"
+                          name="CHART_OF_ACCOUNTS_ID"
+                          precision="15" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[ACCOUNT_TYPE]"
+                          dataType="wstr"
+                          length="1"
+                          name="ACCOUNT_TYPE" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                      isErrorOut="true"
+                      name="ADO NET Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CODE_COMBINATION_ID]"
+                          dataType="numeric"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CODE_COMBINATION_ID]"
+                          name="CODE_COMBINATION_ID"
+                          precision="15" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT1]"
+                          dataType="wstr"
+                          length="25"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT1]"
+                          name="SEGMENT1" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT2]"
+                          dataType="wstr"
+                          length="25"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT2]"
+                          name="SEGMENT2" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT3]"
+                          dataType="wstr"
+                          length="25"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT3]"
+                          name="SEGMENT3" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT4]"
+                          dataType="wstr"
+                          length="25"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT4]"
+                          name="SEGMENT4" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT5]"
+                          dataType="wstr"
+                          length="25"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT5]"
+                          name="SEGMENT5" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT6]"
+                          dataType="wstr"
+                          length="25"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT6]"
+                          name="SEGMENT6" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT7]"
+                          dataType="wstr"
+                          length="25"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT7]"
+                          name="SEGMENT7" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT8]"
+                          dataType="wstr"
+                          length="25"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT8]"
+                          name="SEGMENT8" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT1_DESC]"
+                          dataType="wstr"
+                          length="160"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT1_DESC]"
+                          name="SEGMENT1_DESC" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT2_DESC]"
+                          dataType="wstr"
+                          length="160"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT2_DESC]"
+                          name="SEGMENT2_DESC" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT3_DESC]"
+                          dataType="wstr"
+                          length="160"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT3_DESC]"
+                          name="SEGMENT3_DESC" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT4_DESC]"
+                          dataType="wstr"
+                          length="160"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT4_DESC]"
+                          name="SEGMENT4_DESC" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT5_DESC]"
+                          dataType="wstr"
+                          length="160"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT5_DESC]"
+                          name="SEGMENT5_DESC" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT6_DESC]"
+                          dataType="wstr"
+                          length="160"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT6_DESC]"
+                          name="SEGMENT6_DESC" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT7_DESC]"
+                          dataType="wstr"
+                          length="160"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT7_DESC]"
+                          name="SEGMENT7_DESC" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT8_DESC]"
+                          dataType="wstr"
+                          length="160"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SEGMENT8_DESC]"
+                          name="SEGMENT8_DESC" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CHART_OF_ACCOUNTS_ID]"
+                          dataType="numeric"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CHART_OF_ACCOUNTS_ID]"
+                          name="CHART_OF_ACCOUNTS_ID"
+                          precision="15" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ACCOUNT_TYPE]"
+                          dataType="wstr"
+                          length="1"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ACCOUNT_TYPE]"
+                          name="ACCOUNT_TYPE" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Data Processing\Data Flow Task\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Data Processing\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Data Processing\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\Data Processing\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Data Processing\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\Data Processing\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Data Processing\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Data Processing\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Data Processing\Data Flow Task\Row Count"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts the rows in a dataset."
+                  name="Row Count">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordCount</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Data Processing\Data Flow Task\Row Count.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Data Processing\Data Flow Task\Row Count.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\Data Processing\Data Flow Task\Row Count.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Data Processing\Data Flow Task\Staging Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Staging Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[stg].[Oracle_GL_Code_Combinations]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable">User::StagingTableName</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">10000</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Data Processing\Data Flow Task\Staging Destination.Connections[OleDbConnection]"
+                      connectionManagerID="{68DA1430-4604-42B8-8F14-2A561148FB28}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].Columns[LineageTMST]"
+                          cachedDataType="date"
+                          cachedName="LineageTMST"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[LineageTMST]"
+                          lineageId="Package\Data Processing\Data Flow Task\Add Metadata.Outputs[Derived Column Output].Columns[LineageTMST]" />
+                        <inputColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].Columns[UpdatedLineageString]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="128"
+                          cachedName="UpdatedLineageString"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedLineageString]"
+                          lineageId="Package\Data Processing\Data Flow Task\Add Metadata.Outputs[Derived Column Output].Columns[UpdatedLineageString]" />
+                        <inputColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].Columns[CODE_COMBINATION_ID]"
+                          cachedDataType="numeric"
+                          cachedName="CODE_COMBINATION_ID"
+                          cachedPrecision="15"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[CODE_COMBINATION_ID]"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[CODE_COMBINATION_ID]" />
+                        <inputColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].Columns[CHART_OF_ACCOUNTS_ID]"
+                          cachedDataType="numeric"
+                          cachedName="CHART_OF_ACCOUNTS_ID"
+                          cachedPrecision="15"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[CHART_OF_ACCOUNTS_ID]"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[CHART_OF_ACCOUNTS_ID]" />
+                        <inputColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].Columns[ACCOUNT_TYPE]"
+                          cachedDataType="wstr"
+                          cachedLength="1"
+                          cachedName="ACCOUNT_TYPE"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[ACCOUNT_TYPE]"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[ACCOUNT_TYPE]" />
+                        <inputColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].Columns[SEGMENT1]"
+                          cachedDataType="wstr"
+                          cachedLength="25"
+                          cachedName="SEGMENT1"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT1]"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT1]" />
+                        <inputColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].Columns[SEGMENT2]"
+                          cachedDataType="wstr"
+                          cachedLength="25"
+                          cachedName="SEGMENT2"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT2]"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT2]" />
+                        <inputColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].Columns[SEGMENT3]"
+                          cachedDataType="wstr"
+                          cachedLength="25"
+                          cachedName="SEGMENT3"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT3]"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT3]" />
+                        <inputColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].Columns[SEGMENT4]"
+                          cachedDataType="wstr"
+                          cachedLength="25"
+                          cachedName="SEGMENT4"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT4]"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT4]" />
+                        <inputColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].Columns[SEGMENT5]"
+                          cachedDataType="wstr"
+                          cachedLength="25"
+                          cachedName="SEGMENT5"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT5]"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT5]" />
+                        <inputColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].Columns[SEGMENT6]"
+                          cachedDataType="wstr"
+                          cachedLength="25"
+                          cachedName="SEGMENT6"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT6]"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT6]" />
+                        <inputColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].Columns[SEGMENT7]"
+                          cachedDataType="wstr"
+                          cachedLength="25"
+                          cachedName="SEGMENT7"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT7]"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT7]" />
+                        <inputColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].Columns[SEGMENT8]"
+                          cachedDataType="wstr"
+                          cachedLength="25"
+                          cachedName="SEGMENT8"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT8]"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT8]" />
+                        <inputColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].Columns[SEGMENT1_DESC]"
+                          cachedDataType="wstr"
+                          cachedLength="160"
+                          cachedName="SEGMENT1_DESC"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT1_DESC]"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT1_DESC]" />
+                        <inputColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].Columns[SEGMENT2_DESC]"
+                          cachedDataType="wstr"
+                          cachedLength="160"
+                          cachedName="SEGMENT2_DESC"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT2_DESC]"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT2_DESC]" />
+                        <inputColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].Columns[SEGMENT3_DESC]"
+                          cachedDataType="wstr"
+                          cachedLength="160"
+                          cachedName="SEGMENT3_DESC"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT3_DESC]"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT3_DESC]" />
+                        <inputColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].Columns[SEGMENT4_DESC]"
+                          cachedDataType="wstr"
+                          cachedLength="160"
+                          cachedName="SEGMENT4_DESC"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT4_DESC]"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT4_DESC]" />
+                        <inputColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].Columns[SEGMENT5_DESC]"
+                          cachedDataType="wstr"
+                          cachedLength="160"
+                          cachedName="SEGMENT5_DESC"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT5_DESC]"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT5_DESC]" />
+                        <inputColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].Columns[SEGMENT6_DESC]"
+                          cachedDataType="wstr"
+                          cachedLength="160"
+                          cachedName="SEGMENT6_DESC"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT6_DESC]"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT6_DESC]" />
+                        <inputColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].Columns[SEGMENT7_DESC]"
+                          cachedDataType="wstr"
+                          cachedLength="160"
+                          cachedName="SEGMENT7_DESC"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT7_DESC]"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT7_DESC]" />
+                        <inputColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].Columns[SEGMENT8_DESC]"
+                          cachedDataType="wstr"
+                          cachedLength="160"
+                          cachedName="SEGMENT8_DESC"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT8_DESC]"
+                          lineageId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[SEGMENT8_DESC]" />
+                        <inputColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].Columns[SourceSystemID]"
+                          cachedDataType="i4"
+                          cachedName="SourceSystemID"
+                          externalMetadataColumnId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SourceSystemID]"
+                          lineageId="Package\Data Processing\Data Flow Task\Add Metadata.Outputs[Derived Column Output].Columns[SourceSystemID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[LineageTMST]"
+                          dataType="dbTimeStamp"
+                          name="LineageTMST" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedLineageString]"
+                          codePage="1252"
+                          dataType="str"
+                          length="128"
+                          name="UpdatedLineageString" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[CODE_COMBINATION_ID]"
+                          dataType="numeric"
+                          name="CODE_COMBINATION_ID"
+                          precision="15" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[CHART_OF_ACCOUNTS_ID]"
+                          dataType="numeric"
+                          name="CHART_OF_ACCOUNTS_ID"
+                          precision="15" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[ACCOUNT_TYPE]"
+                          dataType="wstr"
+                          length="1"
+                          name="ACCOUNT_TYPE" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT1]"
+                          dataType="wstr"
+                          length="25"
+                          name="SEGMENT1" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT2]"
+                          dataType="wstr"
+                          length="25"
+                          name="SEGMENT2" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT3]"
+                          dataType="wstr"
+                          length="25"
+                          name="SEGMENT3" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT4]"
+                          dataType="wstr"
+                          length="25"
+                          name="SEGMENT4" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT5]"
+                          dataType="wstr"
+                          length="25"
+                          name="SEGMENT5" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT6]"
+                          dataType="wstr"
+                          length="25"
+                          name="SEGMENT6" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT7]"
+                          dataType="wstr"
+                          length="25"
+                          name="SEGMENT7" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT8]"
+                          dataType="wstr"
+                          length="25"
+                          name="SEGMENT8" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT1_DESC]"
+                          dataType="wstr"
+                          length="160"
+                          name="SEGMENT1_DESC" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT2_DESC]"
+                          dataType="wstr"
+                          length="160"
+                          name="SEGMENT2_DESC" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT3_DESC]"
+                          dataType="wstr"
+                          length="160"
+                          name="SEGMENT3_DESC" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT4_DESC]"
+                          dataType="wstr"
+                          length="160"
+                          name="SEGMENT4_DESC" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT5_DESC]"
+                          dataType="wstr"
+                          length="160"
+                          name="SEGMENT5_DESC" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT6_DESC]"
+                          dataType="wstr"
+                          length="160"
+                          name="SEGMENT6_DESC" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT7_DESC]"
+                          dataType="wstr"
+                          length="160"
+                          name="SEGMENT7_DESC" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEGMENT8_DESC]"
+                          dataType="wstr"
+                          length="160"
+                          name="SEGMENT8_DESC" />
+                        <externalMetadataColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[SourceSystemID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="128"
+                          name="SourceSystemID" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Data Processing\Data Flow Task\Staging Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Data Processing\Data Flow Task\Staging Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Data Processing\Data Flow Task\Staging Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Data Processing\Data Flow Task\Staging Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Data Processing\Data Flow Task.Paths[ADO NET Source Output]"
+                  endId="Package\Data Processing\Data Flow Task\Add Metadata.Inputs[Derived Column Input]"
+                  name="ADO NET Source Output"
+                  startId="Package\Data Processing\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output]" />
+                <path
+                  refId="Package\Data Processing\Data Flow Task.Paths[Data Conversion Output]"
+                  endId="Package\Data Processing\Data Flow Task\Row Count.Inputs[Row Count Input 1]"
+                  name="Data Conversion Output"
+                  startId="Package\Data Processing\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\Data Processing\Data Flow Task.Paths[Derived Column Output]"
+                  endId="Package\Data Processing\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Derived Column Output"
+                  startId="Package\Data Processing\Data Flow Task\Add Metadata.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Data Processing\Data Flow Task.Paths[Row Count Output 1]"
+                  endId="Package\Data Processing\Data Flow Task\Staging Destination.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\Data Processing\Data Flow Task\Row Count.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Data Processing\Truncate Staging Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{394B72B2-4F62-45EB-B69C-041B4693511C}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate Staging Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{68DA1430-4604-42B8-8F14-2A561148FB28}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::TruncateTableCommand" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Data Processing.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{AF7C280C-9ACE-414D-9AA7-44113B06AF88}"
+          DTS:From="Package\Data Processing\Truncate Staging Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Data Processing\Data Flow Task" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Failure Loading Closeout"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{C8C7BCF8-2EE7-404C-B205-A2D42FFA830C}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Failure Loading Closeout">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Failure Loading Closeout\Send Failure e-Mail"
+          DTS:CreationName="Microsoft.SendMailTask"
+          DTS:Description="Send a failure e-mail if the data flow fails"
+          DTS:DTSID="{65B7ABE4-905D-44BF-957B-EAA540174587}"
+          DTS:ExecutableType="Microsoft.SendMailTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Send Failure e-Mail"
+          DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:PropertyExpression
+            DTS:Name="FromLine">@[$Project::SendFailureEMail_FromLine]</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="MessageSource">@[System::PackageName] + ".dtsx FAILED at " +  (DT_STR, 50, 1252) GETDATE()</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="Subject">@[System::PackageName] + ".dtsx FAILED"</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="ToLine">@[$Project::SendFailureEMail_ToLine]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SendMailTask:SendMailTaskData
+              SendMailTask:SMTPServer="{E826453B-5A5C-4217-BE0C-1DF882C1E087}"
+              SendMailTask:From="SSISETLServer@harsco.com"
+              SendMailTask:To="SSISFailure@harsco.com;HSCMetalsBIGroup@harsco.com"
+              SendMailTask:Subject="StagingOracle-gl_code_combinations.dtsx FAILED"
+              SendMailTask:MessageSource="StagingOracle-gl_code_combinations.dtsx FAILED at 2018-04-12 09:49:13.511000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Failure Loading Closeout\Write Failure Record"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{FDD44537-319A-4164-A848-31B92F46908F}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Write Failure Record"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="4">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{164DC0EF-9E77-4AAF-A8A5-3D76C1D3B6DE}"
+              SQLTask:SqlStatementSource="UPDATE dbo.SSISAudit SET&#xA;CompleteTMST = GETDATE(),&#xA;CompletionMessage = ?&#xA;WHERE SSISAuditKey = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::FailureMessage"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::LineageID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Setup"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{0C73CF01-670F-4AEA-8B9B-2E1F7B37FD67}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Setup">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Setup\Check for Incremental Record"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{BDDA7FAE-7F5C-444E-B881-544ADCDF3CE6}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Check for Incremental Record"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{164DC0EF-9E77-4AAF-A8A5-3D76C1D3B6DE}"
+              SQLTask:SqlStatementSource="IF NOT EXISTS (SELECT * FROM dbo.SSISIncrementalTracking WHERE PackageName = ?)&#xA;BEGIN&#xA;INSERT INTO dbo.SSISIncrementalTracking (PackageName, LastRunTMST, LastRunDT, UpdateBy, LastUpdateTMST) VALUES (?, CAST('1/1/1900' AS datetime), CAST('1/1/1900' AS date), SUSER_SNAME(), GETDATE())&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Setup\Error Getting Lineage"
+          DTS:CreationName="Microsoft.SendMailTask"
+          DTS:Description="Send Mail Task on Failure to Get Lineage"
+          DTS:Disabled="True"
+          DTS:DTSID="{E024A3C1-4BBD-48FA-B2F6-1621F1E1A1C1}"
+          DTS:ExecutableType="Microsoft.SendMailTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Error Getting Lineage"
+          DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:PropertyExpression
+            DTS:Name="FromLine">@[$Project::ErrorGettingLineage_FromLine]</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="MessageSource">@[System::PackageName] + ".dtsx get lineage failed at " +  (DT_STR, 50, 1252) GETDATE()</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="Subject">@[System::PackageName] + ".dtsx get lineage failure"</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="ToLine">@[$Project::ErrorGettingLineage_ToLine]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SendMailTask:SendMailTaskData
+              SendMailTask:SMTPServer="{E826453B-5A5C-4217-BE0C-1DF882C1E087}"
+              SendMailTask:From="SSISETLServer@harsco.com"
+              SendMailTask:To="SSISFailure@harsco.com;HSCMetalsBIGroup@harsco.com"
+              SendMailTask:Subject="StagingOracle-gl_code_combinations.dtsx get lineage failure"
+              SendMailTask:MessageSource="StagingOracle-gl_code_combinations.dtsx get lineage failed at 2018-04-12 09:49:13.521000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Setup\Failed Connection Mail Notification"
+          DTS:CreationName="Microsoft.SendMailTask"
+          DTS:Description="Sends an e-mail when connection fails"
+          DTS:Disabled="True"
+          DTS:DTSID="{B8B6B9D5-4DC0-48C4-9FE9-F76812B8DB55}"
+          DTS:ExecutableType="Microsoft.SendMailTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Failed Connection Mail Notification"
+          DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:PropertyExpression
+            DTS:Name="FromLine">@[$Project::FailedConnectionMailNotification_FromLine]</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="MessageSource">@[System::PackageName] + ".dtsx connection validations failed at " +  (DT_STR, 50, 1252) GETDATE()</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="Subject">@[System::PackageName] + ".dtsx connection validations failure"</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="ToLine">@[$Project::FailedConnectionMailNotification_ToLine]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SendMailTask:SendMailTaskData
+              SendMailTask:SMTPServer="{E826453B-5A5C-4217-BE0C-1DF882C1E087}"
+              SendMailTask:From="SSISETLServer@harsco.com"
+              SendMailTask:To="SSISFailure@harsco.com;HSCMetalsBIGroup@harsco.com"
+              SendMailTask:Subject="StagingOracle-gl_code_combinations.dtsx connection validations failure"
+              SendMailTask:MessageSource="StagingOracle-gl_code_combinations.dtsx connection validations failed at 2018-04-12 09:49:13.526000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Setup\Get Last Incremental Update"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{CF08FC42-69C5-4FC4-A676-5329BA260C89}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get Last Incremental Update"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{164DC0EF-9E77-4AAF-A8A5-3D76C1D3B6DE}"
+              SQLTask:SqlStatementSource="SELECT LastRunTMST, CAST(LastRunDT AS datetime) LastRunDT FROM dbo.SSISIncrementalTracking WHERE PackageName = ?"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="LastRunTMST"
+                SQLTask:DtsVariableName="User::LastRunTMST" />
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="LastRunDT"
+                SQLTask:DtsVariableName="User::LastRunDT" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Setup\Get Lineage - Insert Audit Record"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{9058E3B4-D403-4304-80B4-FE3BC4220195}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get Lineage - Insert Audit Record"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{164DC0EF-9E77-4AAF-A8A5-3D76C1D3B6DE}"
+              SQLTask:SqlStatementSource="INSERT INTO dbo.SSISAudit (PackageName, LineageTMST) VALUES (?, ?);&#xA;&#xA;SELECT ? = SCOPE_IDENTITY();&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::StartTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::LineageID"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Setup\Set Lineage String"
+          DTS:CreationName="Microsoft.ScriptTask"
+          DTS:Description="Set the lineage string value"
+          DTS:DTSID="{E18B0E9C-68F5-4535-8961-1758601711B9}"
+          DTS:ExecutableType="Microsoft.ScriptTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Set Lineage String"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <ScriptProject
+              Name="ST_7998fc2deef84705a77a45c7f9c2b81e"
+              VSTAMajorVersion="15"
+              VSTAMinorVersion="0"
+              Language="CSharp">
+              <ProjectItem
+                Name="Properties\Resources.resx"
+                Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Settings.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_7998fc2deef84705a77a45c7f9c2b81e.csproj.Properties.Settings.get_Default():ST_7998fc2deef84705a77a45c7f9c2b81e.csproj.Properties.Sett" +
+    "ings")]
+
+namespace ST_7998fc2deef84705a77a45c7f9c2b81e.csproj.Properties
+{
+
+
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
+    {
+
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+
+        public static Settings Default
+        {
+            get
+            {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <ProjectItem
+                Name="st_7998fc2deef84705a77a45c7f9c2b81e.csproj"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="utf-16"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- This section defines project-level properties.
+
+       Configuration - Specifies whether the default configuration is Release or Debug.
+       Platform - Specifies what CPU the output of this project can run on.
+       OutputType - Must be "Library" for VSTA.
+       NoStandardLibraries - Set to "false" for VSTA.
+       RootNamespace - In C#, this specifies the namespace given to new files.
+                       In Visual Basic, all objects are wrapped in this namespace at runtime.
+       AssemblyName - Name of the output assembly.
+  -->
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <RootNamespace>ST_7998fc2deef84705a77a45c7f9c2b81e.csproj</RootNamespace>
+    <AssemblyName>ST_7998fc2deef84705a77a45c7f9c2b81e.csproj</AssemblyName>
+    <ProjectGuid>{E1D6E178-FA13-478E-9AB4-85A6AC29C7B0}</ProjectGuid>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Debug" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Release" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- This section enables pre- and post-build steps. However,
+       it is recommended that MSBuild tasks be used instead of these properties.
+  -->
+  <PropertyGroup>
+    <PreBuildEvent></PreBuildEvent>
+    <PostBuildEvent></PostBuildEvent>
+  </PropertyGroup>
+  <!-- This sections specifies references for the project. -->
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=14.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=14.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <!-- This section defines the user source files that are part of the
+       project.
+
+       Compile - Specifies a source file to compile.
+       EmbeddedResource - Specifies a .resx file for embedded resources.
+       None - Specifies a file that is not to be passed to the compiler (for instance,
+              a text file or XML file).
+       AppDesigner - Specifies the directory where the application properties files can
+                     be found.
+  -->
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <!-- Include the default configuration information and metadata files for the add-in.
+         These files are copied to the build output directory when the project is
+         built, and the path to the configuration file is passed to add-in on the command
+         line when debugging.
+    -->
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="" />
+        <Host Name="SSIS_ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST140</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+</Project>]]></ProjectItem>
+              <ProjectItem
+                Name="ScriptMain.cs"
+                Encoding="UTF8"><![CDATA[/*
+   Microsoft SQL Server Integration Services Script Task
+   Write scripts using Microsoft Visual C# 2008.
+   The ScriptMain is the entry point class of the script.
+*/
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Windows.Forms;
+
+namespace CreateLineageString
+{
+    [Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+    public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+    {
+
+        #region VSTA generated code
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+        /*
+		The execution engine calls this method when the task executes.
+		To access the object model, use the Dts property. Connections, variables, events,
+		and logging features are available as members of the Dts property as shown in the following examples.
+
+		To reference a variable, call Dts.Variables["MyCaseSensitiveVariableName"].Value;
+		To post a log entry, call Dts.Log("This is my log text", 999, null);
+		To fire an event, call Dts.Events.FireInformation(99, "test", "hit the help message", "", 0, true);
+
+		To use the connections collection use something like the following:
+		ConnectionManager cm = Dts.Connections.Add("OLEDB");
+		cm.ConnectionString = "Data Source=localhost;Initial Catalog=AdventureWorks;Provider=SQLNCLI10;Integrated Security=SSPI;Auto Translate=False;";
+
+		Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+		
+		To open Help, press F1.
+	*/
+
+        public void Main()
+        {
+            try
+            {
+                Dts.Variables["LineageString"].Value = Dts.Variables["LineageString"].Value + Dts.Variables["LineageID"].Value.ToString().Trim();
+                Dts.TaskResult = (int)ScriptResults.Success;
+            }
+            catch
+            {
+                Dts.TaskResult = (int)ScriptResults.Failure;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <ProjectItem
+                Name="Project"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>st_7998fc2deef84705a77a45c7f9c2b81e</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>st_7998fc2deef84705a77a45c7f9c2b81e</msb:DisplayName>
+    <msb:ProjectId>{FC2D6D39-A035-4277-B2E6-3DDF0888EF5D}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="st_7998fc2deef84705a77a45c7f9c2b81e.csproj" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+    <msb:File Include="ScriptMain.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\AssemblyInfo.cs"
+                Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_7998fc2deef84705a77a45c7f9c2b81e.csproj")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyProduct("ST_7998fc2deef84705a77a45c7f9c2b81e.csproj")]
+[assembly: AssemblyCopyright("Copyright @ Microsoft 2014")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Settings.settings"
+                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Resources.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_7998fc2deef84705a77a45c7f9c2b81e.csproj.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_7998fc2deef84705a77a45c7f9c2b81e.csproj.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_7998fc2deef84705a77a45c7f9c2b81e.csproj.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_7998fc2deef84705a77a45c7f9c2b81e.csproj.Properties
+{
+
+
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources
+    {
+
+        private static global::System.Resources.ResourceManager resourceMan;
+
+        private static global::System.Globalization.CultureInfo resourceCulture;
+
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources()
+        {
+        }
+
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if ((resourceMan == null))
+                {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_7998fc2deef84705a77a45c7f9c2b81e.csproj.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
+                return resourceCulture;
+            }
+            set
+            {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+            </ScriptProject>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Setup\Validate Connections Script"
+          DTS:CreationName="Microsoft.ScriptTask"
+          DTS:Description="Script Task"
+          DTS:DTSID="{755AC15E-1EC9-4378-9620-35A99ADD9D9C}"
+          DTS:ExecutableType="Microsoft.ScriptTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Validate Connections Script"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <ScriptProject
+              Name="ST_231a69c233f842a39d0e227465cc132a"
+              VSTAMajorVersion="15"
+              VSTAMinorVersion="0"
+              Language="CSharp">
+              <ProjectItem
+                Name="Properties\Resources.resx"
+                Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Settings.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_231a69c233f842a39d0e227465cc132a.csproj.Properties.Settings.get_Default():ST_231a69c233f842a39d0e227465cc132a.csproj.Properties.Sett" +
+    "ings")]
+
+namespace ST_231a69c233f842a39d0e227465cc132a.csproj.Properties
+{
+
+
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
+    {
+
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+
+        public static Settings Default
+        {
+            get
+            {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <ProjectItem
+                Name="st_231a69c233f842a39d0e227465cc132a.csproj"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="utf-16"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- This section defines project-level properties.
+
+       Configuration - Specifies whether the default configuration is Release or Debug.
+       Platform - Specifies what CPU the output of this project can run on.
+       OutputType - Must be "Library" for VSTA.
+       NoStandardLibraries - Set to "false" for VSTA.
+       RootNamespace - In C#, this specifies the namespace given to new files.
+                       In Visual Basic, all objects are wrapped in this namespace at runtime.
+       AssemblyName - Name of the output assembly.
+  -->
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <RootNamespace>ST_231a69c233f842a39d0e227465cc132a.csproj</RootNamespace>
+    <AssemblyName>ST_231a69c233f842a39d0e227465cc132a.csproj</AssemblyName>
+    <ProjectGuid>{5980A4A4-A166-41B3-B4F4-623262612552}</ProjectGuid>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Debug" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Release" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- This section enables pre- and post-build steps. However,
+       it is recommended that MSBuild tasks be used instead of these properties.
+  -->
+  <PropertyGroup>
+    <PreBuildEvent></PreBuildEvent>
+    <PostBuildEvent></PostBuildEvent>
+  </PropertyGroup>
+  <!-- This sections specifies references for the project. -->
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=14.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=14.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <!-- This section defines the user source files that are part of the
+       project.
+
+       Compile - Specifies a source file to compile.
+       EmbeddedResource - Specifies a .resx file for embedded resources.
+       None - Specifies a file that is not to be passed to the compiler (for instance,
+              a text file or XML file).
+       AppDesigner - Specifies the directory where the application properties files can
+                     be found.
+  -->
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <!-- Include the default configuration information and metadata files for the add-in.
+         These files are copied to the build output directory when the project is
+         built, and the path to the configuration file is passed to add-in on the command
+         line when debugging.
+    -->
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="" />
+        <Host Name="SSIS_ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST140</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+</Project>]]></ProjectItem>
+              <ProjectItem
+                Name="ScriptMain.cs"
+                Encoding="UTF8"><![CDATA[/*
+   Microsoft SQL Server Integration Services Script Task
+   Write scripts using Microsoft Visual C# 2008.
+   The ScriptMain is the entry point class of the script.
+*/
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Windows.Forms;
+
+namespace ValidateConnectionsScript
+{
+    [Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+    public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+    {
+
+        #region VSTA generated code
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+        /*
+		The execution engine calls this method when the task executes.
+		To access the object model, use the Dts property. Connections, variables, events,
+		and logging features are available as members of the Dts property as shown in the following examples.
+
+		To reference a variable, call Dts.Variables["MyCaseSensitiveVariableName"].Value;
+		To post a log entry, call Dts.Log("This is my log text", 999, null);
+		To fire an event, call Dts.Events.FireInformation(99, "test", "hit the help message", "", 0, true);
+
+		To use the connections collection use something like the following:
+		ConnectionManager cm = Dts.Connections.Add("OLEDB");
+		cm.ConnectionString = "Data Source=localhost;Initial Catalog=AdventureWorks;Provider=SQLNCLI10;Integrated Security=SSPI;Auto Translate=False;";
+
+		Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+		
+		To open Help, press F1.
+	*/
+
+   public void Main()
+   {
+        string connStr;
+		bool success = true;
+		bool fireAgain = true;
+														
+		if (Dts.Connections.Count == 0)
+		{
+            MessageBox.Show("Count = " + Dts.Connections.Count.ToString());
+            Dts.TaskResult = (int)Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure;
+			return;
+		}
+
+			
+		foreach(ConnectionManager connMgr in Dts.Connections)
+		{
+			connStr = connMgr.ConnectionString;
+			Dts.Events.FireInformation(1, "", "Connection string = " + connStr, "", 0, ref fireAgain);
+			try
+			{
+				connMgr.AcquireConnection(null);
+				Dts.Events.FireInformation(1, "", "Connected successfully to " + connMgr.Name, "", 0, ref fireAgain);
+			}
+			catch
+			{
+				Dts.Events.FireError(-1, "", "Connection failed on " + connMgr.Name, "", 0);
+				success = false;
+			}
+		}
+
+
+		if (success)
+			Dts.TaskResult = (int)Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success;
+		else
+			Dts.TaskResult = (int)Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure;
+		}	
+   }
+}]]></ProjectItem>
+              <ProjectItem
+                Name="Project"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>st_231a69c233f842a39d0e227465cc132a</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>st_231a69c233f842a39d0e227465cc132a</msb:DisplayName>
+    <msb:ProjectId>{BB58AF4C-D929-4890-B88C-B1DED74E44D9}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="st_231a69c233f842a39d0e227465cc132a.csproj" />
+    <msb:File Include="ScriptMain.cs" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\AssemblyInfo.cs"
+                Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_231a69c233f842a39d0e227465cc132a.csproj")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyProduct("ST_231a69c233f842a39d0e227465cc132a.csproj")]
+[assembly: AssemblyCopyright("Copyright @ Microsoft 2014")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Settings.settings"
+                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Resources.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_231a69c233f842a39d0e227465cc132a.csproj.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_231a69c233f842a39d0e227465cc132a.csproj.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_231a69c233f842a39d0e227465cc132a.csproj.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_231a69c233f842a39d0e227465cc132a.csproj.Properties
+{
+
+
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources
+    {
+
+        private static global::System.Resources.ResourceManager resourceMan;
+
+        private static global::System.Globalization.CultureInfo resourceCulture;
+
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources()
+        {
+        }
+
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if ((resourceMan == null))
+                {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_231a69c233f842a39d0e227465cc132a.csproj.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
+                return resourceCulture;
+            }
+            set
+            {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+            </ScriptProject>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Setup.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{4F32E972-2FC6-4ECB-8D3E-A18A176999A0}"
+          DTS:From="Package\Setup\Validate Connections Script"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Setup\Failed Connection Mail Notification"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Setup.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{8899F0C1-0A35-4306-AA7F-C80A057D3077}"
+          DTS:From="Package\Setup\Validate Connections Script"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Setup\Get Lineage - Insert Audit Record" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Setup.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{666233F0-8B43-49DC-B987-56285E63AAA0}"
+          DTS:From="Package\Setup\Get Lineage - Insert Audit Record"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Setup\Error Getting Lineage"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Setup.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{AEE36294-A1B9-4825-9B1F-1243CDA10393}"
+          DTS:From="Package\Setup\Get Lineage - Insert Audit Record"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Setup\Set Lineage String" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Setup.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{322F3470-3085-4060-B0ED-FC936F2FE377}"
+          DTS:From="Package\Setup\Set Lineage String"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\Setup\Check for Incremental Record" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Setup.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{9081826D-F82C-41BB-A171-6C686FD8D7A6}"
+          DTS:From="Package\Setup\Check for Incremental Record"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\Setup\Get Last Incremental Update" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Successful Loading Closeout"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{2D37BE5B-D8B6-44BA-A28A-CEFF9D3056B0}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Successful Loading Closeout">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Successful Loading Closeout\Send Success e-Mail"
+          DTS:CreationName="Microsoft.SendMailTask"
+          DTS:Description="Sends an e-mail on successful completion of the package"
+          DTS:Disabled="True"
+          DTS:DTSID="{3244FA54-5D19-4DC6-B817-E84050471D26}"
+          DTS:ExecutableType="Microsoft.SendMailTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Send Success e-Mail"
+          DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:PropertyExpression
+            DTS:Name="FromLine">@[$Project::SendSuccessEMail_FromLine]</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="MessageSource">@[System::PackageName] + ".dtsx completed successfully at " +  (DT_STR, 50, 1252) GETDATE()</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="Subject">@[System::PackageName] + ".dtsx completed successfully"</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="ToLine">@[$Project::SendSuccessEMail_ToLine]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SendMailTask:SendMailTaskData
+              SendMailTask:SMTPServer="{E826453B-5A5C-4217-BE0C-1DF882C1E087}"
+              SendMailTask:From="SSISETLServer@harsco.com"
+              SendMailTask:To="SSISFailure@harsco.com;HSCMetalsBIGroup@harsco.com"
+              SendMailTask:Subject="StagingOracle-gl_code_combinations.dtsx completed successfully"
+              SendMailTask:MessageSource="StagingOracle-gl_code_combinations.dtsx completed successfully at 2018-04-12 09:49:13.531000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Successful Loading Closeout\Update Incremental Dates"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{542B42A1-EB4F-4B57-BEAF-8E977A972E82}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update Incremental Dates"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{164DC0EF-9E77-4AAF-A8A5-3D76C1D3B6DE}"
+              SQLTask:SqlStatementSource="UPDATE dbo.SSISIncrementalTracking SET LastRunTMST = ?, LastRunDT = ?, UpdateBy = SUSER_SNAME(), LastUpdateTMST = GETDATE() WHERE PackageName = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="System::StartTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::StartTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Successful Loading Closeout\Write Success Record"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{2867E56E-EB40-4A79-9F48-FD4BF3DA873B}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Write Success Record"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{164DC0EF-9E77-4AAF-A8A5-3D76C1D3B6DE}"
+              SQLTask:SqlStatementSource="UPDATE dbo.SSISAudit SET&#xA;CompleteTMST = GETDATE(),&#xA;CompletionMessage = ?&#xA;WHERE SSISAuditKey = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::SuccessMessage"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::LineageID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{D959D303-85C2-48B1-B4D8-27F91E60E7B3}"
+      DTS:From="Package\Setup"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Processing" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{22BE2634-2AE4-4F84-9F5F-50E29B644AEA}"
+      DTS:From="Package\Data Processing"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Successful Loading Closeout" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{E2E73196-E91D-432C-90A2-485D57E194F9}"
+      DTS:From="Package\Data Processing"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Failure Loading Closeout"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="152,43"
+          Id="Package\Data Processing\Data Flow Task"
+          TopLeft="65.2222213322917,121.944442597694" />
+        <NodeLayout
+          Size="189,43"
+          Id="Package\Data Processing\Truncate Staging Table"
+          TopLeft="41.958332790062,27.1666662792364" />
+        <EdgeLayout
+          Id="Package\Data Processing.PrecedenceConstraints[Constraint]"
+          TopLeft="138.92361039451,69.8333329459031">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.1111096517909"
+              Start="0,0"
+              End="0,44.6111096517909">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.6111096517909" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="296,220"
+          Size="296,263"
+          Id="Package\Data Processing"
+          TopLeft="739.083334233612,600.833333255847" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Failure Loading Closeout\Send Failure e-Mail"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Failure Loading Closeout\Write Failure Record"
+          TopLeft="235.5,5.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="416,103"
+          Size="416,146"
+          Id="Package\Failure Loading Closeout"
+          TopLeft="755,927.5" />
+        <NodeLayout
+          Size="219,42"
+          Id="Package\Setup\Check for Incremental Record"
+          TopLeft="316.5,311.5" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Setup\Error Getting Lineage"
+          TopLeft="103,209.5" />
+        <NodeLayout
+          Size="241,42"
+          Id="Package\Setup\Failed Connection Mail Notification"
+          TopLeft="5.5,107.5" />
+        <NodeLayout
+          Size="215,42"
+          Id="Package\Setup\Get Last Incremental Update"
+          TopLeft="318.5,413.5" />
+        <NodeLayout
+          Size="237,42"
+          Id="Package\Setup\Get Lineage - Insert Audit Record"
+          TopLeft="307.5,107.5" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Setup\Set Lineage String"
+          TopLeft="343.5,209.5" />
+        <NodeLayout
+          Size="207,42"
+          Id="Package\Setup\Validate Connections Script"
+          TopLeft="322.5,5.5" />
+        <EdgeLayout
+          Id="Package\Setup.PrecedenceConstraints[Constraint]"
+          TopLeft="392.833333333333,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-266.833333333333,60"
+              Start="0,0"
+              End="-266.833333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2761265580057" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2761265580057"
+                    Point2="0,24.2761265580057"
+                    Point3="-4,24.2761265580057" />
+                  <mssgle:LineSegment
+                    End="-262.833333333333,24.2761265580057" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-262.833333333333,24.2761265580057"
+                    Point2="-266.833333333333,24.2761265580057"
+                    Point3="-266.833333333333,28.2761265580057" />
+                  <mssgle:LineSegment
+                    End="-266.833333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-148.658014322916,29.2761265580057,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Setup.PrecedenceConstraints[Constraint 1]"
+          TopLeft="459.166666666667,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-33.1666666666666,60"
+              Start="0,0"
+              End="-33.1666666666666,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2761265580058" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2761265580058"
+                    Point2="0,24.2761265580058"
+                    Point3="-4,24.2761265580058" />
+                  <mssgle:LineSegment
+                    End="-29.1666666666666,24.2761265580058" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-29.1666666666666,24.2761265580058"
+                    Point2="-33.1666666666666,24.2761265580058"
+                    Point3="-33.1666666666666,28.2761265580058" />
+                  <mssgle:LineSegment
+                    End="-33.1666666666666,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Setup.PrecedenceConstraints[Constraint 2]"
+          TopLeft="387.833333333333,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-194.833333333333,60"
+              Start="0,0"
+              End="-194.833333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2414082145851" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2414082145851"
+                    Point2="0,24.2414082145851"
+                    Point3="-4,24.2414082145851" />
+                  <mssgle:LineSegment
+                    End="-190.833333333333,24.2414082145851" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-190.833333333333,24.2414082145851"
+                    Point2="-194.833333333333,24.2414082145851"
+                    Point3="-194.833333333333,28.2414082145851" />
+                  <mssgle:LineSegment
+                    End="-194.833333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-112.658014322917,29.2414082145851,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Setup.PrecedenceConstraints[Constraint 3]"
+          TopLeft="464.166666666667,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-38.1666666666666,60"
+              Start="0,0"
+              End="-38.1666666666666,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2414082145851" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2414082145851"
+                    Point2="0,24.2414082145851"
+                    Point3="-4,24.2414082145851" />
+                  <mssgle:LineSegment
+                    End="-34.1666666666666,24.2414082145851" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-34.1666666666666,24.2414082145851"
+                    Point2="-38.1666666666666,24.2414082145851"
+                    Point3="-38.1666666666666,28.2414082145851" />
+                  <mssgle:LineSegment
+                    End="-38.1666666666666,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Setup.PrecedenceConstraints[Constraint 4]"
+          TopLeft="426,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Setup.PrecedenceConstraints[Constraint 5]"
+          TopLeft="426,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="550,511"
+          Size="550,554"
+          Id="Package\Setup"
+          TopLeft="551,8.49999999999977" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Successful Loading Closeout\Send Success e-Mail"
+          TopLeft="5.50000000000006,5.5" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\Successful Loading Closeout\Update Incremental Dates"
+          TopLeft="240.5,5.49999999999989" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Successful Loading Closeout\Write Success Record"
+          TopLeft="503.5,5.49999999999989" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="689,103"
+          Size="689,146"
+          Id="Package\Successful Loading Closeout"
+          TopLeft="5.50000000000011,927.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="826,562.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="61.0833342336121,38.3333332558473"
+              Start="0,0"
+              End="61.0833342336121,30.8333332558473">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.1666666279236" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.1666666279236"
+                    Point2="0,19.1666666279236"
+                    Point3="4,19.1666666279236" />
+                  <mssgle:LineSegment
+                    End="57.0833342336121,19.1666666279236" />
+                  <mssgle:CubicBezierSegment
+                    Point1="57.0833342336121,19.1666666279236"
+                    Point2="61.0833342336121,19.1666666279236"
+                    Point3="61.0833342336121,23.1666666279236" />
+                  <mssgle:LineSegment
+                    End="61.0833342336121,30.8333332558473" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="839.083334233612,863.833333255847">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-489.083334233612,63.666666744153"
+              Start="0,0"
+              End="-489.083334233612,56.166666744153">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.6720430419972" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.6720430419972"
+                    Point2="0,25.6720430419972"
+                    Point3="-4,25.6720430419972" />
+                  <mssgle:LineSegment
+                    End="-485.083334233612,25.6720430419972" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-485.083334233612,25.6720430419972"
+                    Point2="-489.083334233612,25.6720430419972"
+                    Point3="-489.083334233612,29.6720430419972" />
+                  <mssgle:LineSegment
+                    End="-489.083334233612,56.166666744153" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="935.083334233612,863.833333255847">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="27.916665766388,63.666666744153"
+              Start="0,0"
+              End="27.916665766388,56.166666744153">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.6720430419972" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.6720430419972"
+                    Point2="0,25.6720430419972"
+                    Point3="4,25.6720430419972" />
+                  <mssgle:LineSegment
+                    End="23.916665766388,25.6720430419972" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23.916665766388,25.6720430419972"
+                    Point2="27.916665766388,25.6720430419972"
+                    Point3="27.916665766388,29.6720430419972" />
+                  <mssgle:LineSegment
+                    End="27.916665766388,56.166666744153" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-1.28301477305602,30.6720430419972,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Processing\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="171,43"
+          Id="Package\Data Processing\Data Flow Task\Staging Destination"
+          TopLeft="14.5,413.5" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Data Processing\Data Flow Task\Row Count"
+          TopLeft="35,311.5" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Data Processing\Data Flow Task\Add Metadata"
+          TopLeft="28,107.5" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Data Processing\Data Flow Task\Data Conversion"
+          TopLeft="22,209.5" />
+        <NodeLayout
+          Size="159,43"
+          Id="Package\Data Processing\Data Flow Task\ADO NET Source"
+          TopLeft="23.3333329856397,14.9333333643278" />
+        <EdgeLayout
+          Id="Package\Data Processing\Data Flow Task.Paths[Row Count Output 1]"
+          TopLeft="99.9166666666667,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Processing\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="100,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Processing\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="100,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Processing\Data Flow Task.Paths[ADO NET Source Output]"
+          TopLeft="101.333333159487,57.6000000309945">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.8999999690055"
+              Start="0,0"
+              End="0,42.3999999690055">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.3999999690055" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Processing\Data Flow Task\Staging Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Processing\Data Flow Task\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

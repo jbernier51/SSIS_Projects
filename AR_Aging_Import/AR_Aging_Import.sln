@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "AR_Aging_Import", "AR_Aging_Import\AR_Aging_Import.dtproj", "{631D33F8-1330-4CD0-954C-7D17811A9F8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{631D33F8-1330-4CD0-954C-7D17811A9F8E}.Development|Default.ActiveCfg = Development
+		{631D33F8-1330-4CD0-954C-7D17811A9F8E}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A54C6C0B-5EA1-4CAF-ABCD-A7F9B1139C5A}
+	EndGlobalSection
+EndGlobal
