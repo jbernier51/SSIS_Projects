@@ -7,12 +7,12 @@
   DTS:CreatorName="W2K8R2-SQL2K8R2\Administrator"
   DTS:DTSID="{22F3E934-451D-4FB1-9135-291861C1A239}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.3002.92"
+  DTS:LastModifiedProductVersion="14.0.3002.101"
   DTS:LocaleID="1033"
   DTS:ObjectName="StagingExcel-UserMaster"
   DTS:PackageType="5"
-  DTS:VersionBuild="202"
-  DTS:VersionGUID="{6E323FF9-92B4-4A5F-8D89-273364548979}">
+  DTS:VersionBuild="203"
+  DTS:VersionGUID="{5E5EF525-F908-491E-83DF-69AF6E96C76D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1293,7 +1293,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Send Failure e-Mail"
           DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -1311,7 +1311,7 @@
               SendMailTask:From="SSISETLServer@harsco.com"
               SendMailTask:To="SSISFailure@harsco.com;HSCMetalsBIGroup@harsco.com"
               SendMailTask:Subject="StagingExcel-UserMaster.dtsx FAILED"
-              SendMailTask:MessageSource="StagingExcel-UserMaster.dtsx FAILED at 2018-04-12 09:55:45.068000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              SendMailTask:MessageSource="StagingExcel-UserMaster.dtsx FAILED at 2018-04-12 16:28:03.229000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -1323,7 +1323,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Write Failure Record"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -1420,7 +1420,7 @@
               SendMailTask:From="SSISETLServer@harsco.com"
               SendMailTask:To="SSISFailure@harsco.com;HSCMetalsBIGroup@harsco.com"
               SendMailTask:Subject="StagingExcel-UserMaster.dtsx get lineage failure"
-              SendMailTask:MessageSource="StagingExcel-UserMaster.dtsx get lineage failed at 2018-04-12 09:55:45.072000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              SendMailTask:MessageSource="StagingExcel-UserMaster.dtsx get lineage failed at 2018-04-12 16:28:03.230000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -1451,7 +1451,7 @@
               SendMailTask:From="SSISETLServer@harsco.com"
               SendMailTask:To="SSISFailure@harsco.com;HSCMetalsBIGroup@harsco.com"
               SendMailTask:Subject="StagingExcel-UserMaster.dtsx connection validations failure"
-              SendMailTask:MessageSource="StagingExcel-UserMaster.dtsx connection validations failed at 2018-04-12 09:55:45.077000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              SendMailTask:MessageSource="StagingExcel-UserMaster.dtsx connection validations failed at 2018-04-12 16:28:03.231000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -1544,14 +1544,35 @@
               VSTAMinorVersion="0"
               Language="CSharp">
               <ProjectItem
-                Name="Properties\Settings.settings"
-                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+                Name="Properties\AssemblyInfo.cs"
+                Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_7998fc2deef84705a77a45c7f9c2b81e.csproj")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyProduct("ST_7998fc2deef84705a77a45c7f9c2b81e.csproj")]
+[assembly: AssemblyCopyright("Copyright @ Microsoft 2014")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
               <ProjectItem
                 Name="Properties\Resources.resx"
                 Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -1921,35 +1942,14 @@ namespace ST_7998fc2deef84705a77a45c7f9c2b81e.csproj.Properties
     }
 }]]></ProjectItem>
               <ProjectItem
-                Name="Properties\AssemblyInfo.cs"
-                Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_7998fc2deef84705a77a45c7f9c2b81e.csproj")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("ST_7998fc2deef84705a77a45c7f9c2b81e.csproj")]
-[assembly: AssemblyCopyright("Copyright @ Microsoft 2014")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+                Name="Properties\Settings.settings"
+                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
               <ProjectItem
                 Name="Properties\Resources.Designer.cs"
                 Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -2049,14 +2049,35 @@ namespace ST_7998fc2deef84705a77a45c7f9c2b81e.csproj.Properties
               VSTAMinorVersion="0"
               Language="CSharp">
               <ProjectItem
-                Name="Properties\Settings.settings"
-                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+                Name="Properties\AssemblyInfo.cs"
+                Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_231a69c233f842a39d0e227465cc132a.csproj")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyProduct("ST_231a69c233f842a39d0e227465cc132a.csproj")]
+[assembly: AssemblyCopyright("Copyright @ Microsoft 2014")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
               <ProjectItem
                 Name="Properties\Resources.resx"
                 Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -2450,35 +2471,14 @@ namespace ST_231a69c233f842a39d0e227465cc132a.csproj.Properties
     }
 }]]></ProjectItem>
               <ProjectItem
-                Name="Properties\AssemblyInfo.cs"
-                Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_231a69c233f842a39d0e227465cc132a.csproj")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("ST_231a69c233f842a39d0e227465cc132a.csproj")]
-[assembly: AssemblyCopyright("Copyright @ Microsoft 2014")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+                Name="Properties\Settings.settings"
+                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
               <ProjectItem
                 Name="Properties\Resources.Designer.cs"
                 Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -2653,7 +2653,7 @@ namespace ST_231a69c233f842a39d0e227465cc132a.csproj.Properties
               SendMailTask:From="SSISETLServer@harsco.com"
               SendMailTask:To="SSISFailure@harsco.com;HSCMetalsBIGroup@harsco.com"
               SendMailTask:Subject="StagingExcel-UserMaster.dtsx completed successfully"
-              SendMailTask:MessageSource="StagingExcel-UserMaster.dtsx completed successfully at 2018-04-12 09:55:45.077000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              SendMailTask:MessageSource="StagingExcel-UserMaster.dtsx completed successfully at 2018-04-12 16:28:03.232000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -2771,37 +2771,37 @@ namespace ST_231a69c233f842a39d0e227465cc132a.csproj.Properties
         <NodeLayout
           Size="152,42"
           Id="Package\Data Processing\Data Flow Task"
-          TopLeft="65.2222213322917,121.944442597694" />
+          TopLeft="45.2222213322917,125.944442597694" />
         <NodeLayout
           Size="190,42"
           Id="Package\Data Processing\Truncate Staging Table"
-          TopLeft="18.5,14.5" />
+          TopLeft="105.5,46.5" />
         <EdgeLayout
           Id="Package\Data Processing.PrecedenceConstraints[Constraint]"
-          TopLeft="113.5,56.5">
+          TopLeft="200.5,88.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="27.7222213322917,65.444442597694"
+              EndConnector="-79.2777786677083,37.444442597694"
               Start="0,0"
-              End="27.7222213322917,57.944442597694">
+              End="-79.2777786677083,29.944442597694">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.722221298847" />
+                    End="0,14.722221298847" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,28.722221298847"
-                    Point2="0,32.722221298847"
-                    Point3="4,32.722221298847" />
+                    Point1="0,14.722221298847"
+                    Point2="0,18.722221298847"
+                    Point3="-4,18.722221298847" />
                   <mssgle:LineSegment
-                    End="23.7222213322917,32.722221298847" />
+                    End="-75.2777786677083,18.722221298847" />
                   <mssgle:CubicBezierSegment
-                    Point1="23.7222213322917,32.722221298847"
-                    Point2="27.7222213322917,32.722221298847"
-                    Point3="27.7222213322917,36.722221298847" />
+                    Point1="-75.2777786677083,18.722221298847"
+                    Point2="-79.2777786677083,18.722221298847"
+                    Point3="-79.2777786677083,22.722221298847" />
                   <mssgle:LineSegment
-                    End="27.7222213322917,57.944442597694" />
+                    End="-79.2777786677083,29.944442597694" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
