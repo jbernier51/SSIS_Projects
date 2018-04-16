@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="StagingJDE-ARInvoices"
   DTS:PackageType="5"
-  DTS:VersionBuild="328"
-  DTS:VersionGUID="{072ED46F-CB84-42CA-9AB8-9CA99DC35CC7}">
+  DTS:VersionBuild="329"
+  DTS:VersionGUID="{CE230F02-1A84-4A6E-9513-1A9818A6BA73}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -33,7 +33,7 @@
           <DTS:Password
             DTS:Name="Pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABHc0KliAj0SMhp+O0Fc0mwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABVJ8fUIHxD+FIMYNMnxW24AAAAAASAAACgAAAAEAAAAIeBIdwoD+Je9VEDshL0mHsYAAAANBRnqjl8b5Bni2tE/u/OoXcF02XU+ulmFAAAACdyXT7HL95GpmYL0gLDXyli24RX</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABHc0KliAj0SMhp+O0Fc0mwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADp2iWGxH+woz8S/HmTUCCmAAAAAASAAACgAAAAEAAAAO9ecwoKFJB3HA+1D6K+UToYAAAAuWfPbMJHogGaniwLEUTmEegiry/tlnzTFAAAANFj4c1dtl2w2x1Yhcj39bqnDxid</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -2037,7 +2037,7 @@ and rpdgj &gt; 110000 and rpupmj &gt;=0</property>
               SendMailTask:From="SSISETLServer@harsco.com"
               SendMailTask:To="SSISFailure@harsco.com;HSCMetalsBIGroup@harsco.com"
               SendMailTask:Subject="StagingJDE-ARInvoices.dtsx FAILED"
-              SendMailTask:MessageSource="StagingJDE-ARInvoices.dtsx FAILED at 2018-04-13 08:24:26.611000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              SendMailTask:MessageSource="StagingJDE-ARInvoices.dtsx FAILED at 2018-04-16 04:25:05.264000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -2114,7 +2114,7 @@ and rpdgj &gt; 110000 and rpupmj &gt;=0</property>
               SendMailTask:From="SSISETLServer@harsco.com"
               SendMailTask:To="SSISFailure@harsco.com;HSCMetalsBIGroup@harsco.com"
               SendMailTask:Subject="StagingJDE-ARInvoices.dtsx get lineage failure"
-              SendMailTask:MessageSource="StagingJDE-ARInvoices.dtsx get lineage failed at 2018-04-13 08:24:26.614000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              SendMailTask:MessageSource="StagingJDE-ARInvoices.dtsx get lineage failed at 2018-04-16 04:25:05.267000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -2145,7 +2145,7 @@ and rpdgj &gt; 110000 and rpupmj &gt;=0</property>
               SendMailTask:From="SSISETLServer@harsco.com"
               SendMailTask:To="SSISFailure@harsco.com;HSCMetalsBIGroup@harsco.com"
               SendMailTask:Subject="StagingJDE-ARInvoices.dtsx connection validations failure"
-              SendMailTask:MessageSource="StagingJDE-ARInvoices.dtsx connection validations failed at 2018-04-13 08:24:26.621000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              SendMailTask:MessageSource="StagingJDE-ARInvoices.dtsx connection validations failed at 2018-04-16 04:25:05.273000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -3298,7 +3298,7 @@ namespace ST_231a69c233f842a39d0e227465cc132a.csproj.Properties
               SendMailTask:From="SSISETLServer@harsco.com"
               SendMailTask:To="SSISFailure@harsco.com;HSCMetalsBIGroup@harsco.com"
               SendMailTask:Subject="StagingJDE-ARInvoices.dtsx completed successfully"
-              SendMailTask:MessageSource="StagingJDE-ARInvoices.dtsx completed successfully at 2018-04-13 08:24:26.623000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              SendMailTask:MessageSource="StagingJDE-ARInvoices.dtsx completed successfully at 2018-04-16 04:25:05.276000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
