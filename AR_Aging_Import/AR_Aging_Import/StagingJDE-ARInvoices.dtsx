@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="StagingJDE-ARInvoices"
   DTS:PackageType="5"
-  DTS:VersionBuild="329"
-  DTS:VersionGUID="{CE230F02-1A84-4A6E-9513-1A9818A6BA73}">
+  DTS:VersionBuild="330"
+  DTS:VersionGUID="{07B5C37D-56BB-479C-948F-DE3973E9CDD4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -33,7 +33,7 @@
           <DTS:Password
             DTS:Name="Pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABHc0KliAj0SMhp+O0Fc0mwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADp2iWGxH+woz8S/HmTUCCmAAAAAASAAACgAAAAEAAAAO9ecwoKFJB3HA+1D6K+UToYAAAAuWfPbMJHogGaniwLEUTmEegiry/tlnzTFAAAANFj4c1dtl2w2x1Yhcj39bqnDxid</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAYf8Z48VuREaie0TCJKhlVgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAD/Kn+dNSABC+KFs6hWTMt8AAAAAASAAACgAAAAEAAAAMCIj73DlCYMrX0XGHwdCMsYAAAA7EGw9BI7kheg/D9ckOt4pRobIquxNTDRFAAAALDPD+aJtDG4pPPcATDjdCBhONIl</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -2019,7 +2019,7 @@ and rpdgj &gt; 110000 and rpupmj &gt;=0</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Send Failure e-Mail"
           DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; Ã‚Â© 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -2037,7 +2037,7 @@ and rpdgj &gt; 110000 and rpupmj &gt;=0</property>
               SendMailTask:From="SSISETLServer@harsco.com"
               SendMailTask:To="SSISFailure@harsco.com;HSCMetalsBIGroup@harsco.com"
               SendMailTask:Subject="StagingJDE-ARInvoices.dtsx FAILED"
-              SendMailTask:MessageSource="StagingJDE-ARInvoices.dtsx FAILED at 2018-04-16 04:25:05.264000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              SendMailTask:MessageSource="StagingJDE-ARInvoices.dtsx FAILED at 2018-04-16 10:37:55.488000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -2049,7 +2049,7 @@ and rpdgj &gt; 110000 and rpupmj &gt;=0</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Write Failure Record"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; Ã‚Â© 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -2096,7 +2096,7 @@ and rpdgj &gt; 110000 and rpupmj &gt;=0</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Error Getting Lineage"
           DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; Ã‚Â© 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -2114,7 +2114,7 @@ and rpdgj &gt; 110000 and rpupmj &gt;=0</property>
               SendMailTask:From="SSISETLServer@harsco.com"
               SendMailTask:To="SSISFailure@harsco.com;HSCMetalsBIGroup@harsco.com"
               SendMailTask:Subject="StagingJDE-ARInvoices.dtsx get lineage failure"
-              SendMailTask:MessageSource="StagingJDE-ARInvoices.dtsx get lineage failed at 2018-04-16 04:25:05.267000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              SendMailTask:MessageSource="StagingJDE-ARInvoices.dtsx get lineage failed at 2018-04-16 10:37:55.491000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -2127,7 +2127,7 @@ and rpdgj &gt; 110000 and rpupmj &gt;=0</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Failed Connection Mail Notification"
           DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; Ã‚Â© 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -2145,7 +2145,7 @@ and rpdgj &gt; 110000 and rpupmj &gt;=0</property>
               SendMailTask:From="SSISETLServer@harsco.com"
               SendMailTask:To="SSISFailure@harsco.com;HSCMetalsBIGroup@harsco.com"
               SendMailTask:Subject="StagingJDE-ARInvoices.dtsx connection validations failure"
-              SendMailTask:MessageSource="StagingJDE-ARInvoices.dtsx connection validations failed at 2018-04-16 04:25:05.273000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              SendMailTask:MessageSource="StagingJDE-ARInvoices.dtsx connection validations failed at 2018-04-16 10:37:55.497000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -2194,7 +2194,7 @@ and rpdgj &gt; 110000 and rpupmj &gt;=0</property>
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Set Lineage String"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -2204,6 +2204,15 @@ and rpdgj &gt; 110000 and rpupmj &gt;=0</property>
               VSTAMajorVersion="15"
               VSTAMinorVersion="0"
               Language="CSharp">
+              <ProjectItem
+                Name="Properties\Settings.settings"
+                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
               <ProjectItem
                 Name="Properties\Resources.resx"
                 Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -2323,39 +2332,6 @@ and rpdgj &gt; 110000 and rpupmj &gt;=0</property>
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
 </root>]]></ProjectItem>
-              <ProjectItem
-                Name="Properties\Settings.Designer.cs"
-                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
-//
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
-
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_7998fc2deef84705a77a45c7f9c2b81e.csproj.Properties.Settings.get_Default():ST_7998fc2deef84705a77a45c7f9c2b81e.csproj.Properties.Sett" +
-    "ings")]
-
-namespace ST_7998fc2deef84705a77a45c7f9c2b81e.csproj.Properties
-{
-
-
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
-    {
-
-        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        private static Settings defaultInstance = new Settings();
-
-        public static Settings Default
-        {
-            get
-            {
-                return defaultInstance;
-            }
-        }
-    }
-}]]></ProjectItem>
               <ProjectItem
                 Name="st_7998fc2deef84705a77a45c7f9c2b81e.csproj"
                 Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="utf-16"?>
@@ -2573,6 +2549,39 @@ namespace CreateLineageString
   </msb:ItemGroup>
 </c:Project>]]></ProjectItem>
               <ProjectItem
+                Name="Properties\Settings.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_7998fc2deef84705a77a45c7f9c2b81e.csproj.Properties.Settings.get_Default():ST_7998fc2deef84705a77a45c7f9c2b81e.csproj.Properties.Sett" +
+    "ings")]
+
+namespace ST_7998fc2deef84705a77a45c7f9c2b81e.csproj.Properties
+{
+
+
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
+    {
+
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+
+        public static Settings Default
+        {
+            get
+            {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <ProjectItem
                 Name="Properties\AssemblyInfo.cs"
                 Encoding="UTF8"><![CDATA[using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -2602,15 +2611,6 @@ using System.Runtime.CompilerServices;
 // by using the '*' as shown below:
 
 [assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
-              <ProjectItem
-                Name="Properties\Settings.settings"
-                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
               <ProjectItem
                 Name="Properties\Resources.Designer.cs"
                 Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -2709,6 +2709,15 @@ namespace ST_7998fc2deef84705a77a45c7f9c2b81e.csproj.Properties
               VSTAMajorVersion="15"
               VSTAMinorVersion="0"
               Language="CSharp">
+              <ProjectItem
+                Name="Properties\Settings.settings"
+                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
               <ProjectItem
                 Name="Properties\Resources.resx"
                 Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -2828,39 +2837,6 @@ namespace ST_7998fc2deef84705a77a45c7f9c2b81e.csproj.Properties
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
 </root>]]></ProjectItem>
-              <ProjectItem
-                Name="Properties\Settings.Designer.cs"
-                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
-//
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
-
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_231a69c233f842a39d0e227465cc132a.csproj.Properties.Settings.get_Default():ST_231a69c233f842a39d0e227465cc132a.csproj.Properties.Sett" +
-    "ings")]
-
-namespace ST_231a69c233f842a39d0e227465cc132a.csproj.Properties
-{
-
-
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
-    {
-
-        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        private static Settings defaultInstance = new Settings();
-
-        public static Settings Default
-        {
-            get
-            {
-                return defaultInstance;
-            }
-        }
-    }
-}]]></ProjectItem>
               <ProjectItem
                 Name="st_231a69c233f842a39d0e227465cc132a.csproj"
                 Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="utf-16"?>
@@ -3102,6 +3078,39 @@ namespace ValidateConnectionsScript
   </msb:ItemGroup>
 </c:Project>]]></ProjectItem>
               <ProjectItem
+                Name="Properties\Settings.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_231a69c233f842a39d0e227465cc132a.csproj.Properties.Settings.get_Default():ST_231a69c233f842a39d0e227465cc132a.csproj.Properties.Sett" +
+    "ings")]
+
+namespace ST_231a69c233f842a39d0e227465cc132a.csproj.Properties
+{
+
+
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
+    {
+
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+
+        public static Settings Default
+        {
+            get
+            {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <ProjectItem
                 Name="Properties\AssemblyInfo.cs"
                 Encoding="UTF8"><![CDATA[using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -3131,15 +3140,6 @@ using System.Runtime.CompilerServices;
 // by using the '*' as shown below:
 
 [assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
-              <ProjectItem
-                Name="Properties\Settings.settings"
-                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
               <ProjectItem
                 Name="Properties\Resources.Designer.cs"
                 Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -3280,7 +3280,7 @@ namespace ST_231a69c233f842a39d0e227465cc132a.csproj.Properties
           DTS:LocaleID="-1"
           DTS:ObjectName="Send Success e-Mail"
           DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; Ã‚Â© 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -3298,7 +3298,7 @@ namespace ST_231a69c233f842a39d0e227465cc132a.csproj.Properties
               SendMailTask:From="SSISETLServer@harsco.com"
               SendMailTask:To="SSISFailure@harsco.com;HSCMetalsBIGroup@harsco.com"
               SendMailTask:Subject="StagingJDE-ARInvoices.dtsx completed successfully"
-              SendMailTask:MessageSource="StagingJDE-ARInvoices.dtsx completed successfully at 2018-04-16 04:25:05.276000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              SendMailTask:MessageSource="StagingJDE-ARInvoices.dtsx completed successfully at 2018-04-16 10:37:55.500000000" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -3310,7 +3310,7 @@ namespace ST_231a69c233f842a39d0e227465cc132a.csproj.Properties
           DTS:LocaleID="-1"
           DTS:ObjectName="Write Success Record"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; Ã‚Â© 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -3493,37 +3493,37 @@ namespace ST_231a69c233f842a39d0e227465cc132a.csproj.Properties
         <NodeLayout
           Size="153,42"
           Id="Package\Data Processing\GetJDELibraries"
-          TopLeft="404.25,30.5" />
+          TopLeft="279.25,12.5" />
         <NodeLayout
           Size="188,41"
           Id="Package\Data Processing\Truncate Staging Table"
-          TopLeft="136.25,106.25" />
+          TopLeft="420.25,126.25" />
         <EdgeLayout
           Id="Package\Data Processing.PrecedenceConstraints[Constraint]"
-          TopLeft="480.75,72.5">
+          TopLeft="355.75,54.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-250.5,33.75"
+              EndConnector="158.5,71.75"
               Start="0,0"
-              End="-250.5,26.25">
+              End="158.5,64.25">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,12.875" />
+                    End="0,31.875" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,12.875"
-                    Point2="0,16.875"
-                    Point3="-4,16.875" />
+                    Point1="0,31.875"
+                    Point2="0,35.875"
+                    Point3="4,35.875" />
                   <mssgle:LineSegment
-                    End="-246.5,16.875" />
+                    End="154.5,35.875" />
                   <mssgle:CubicBezierSegment
-                    Point1="-246.5,16.875"
-                    Point2="-250.5,16.875"
-                    Point3="-250.5,20.875" />
+                    Point1="154.5,35.875"
+                    Point2="158.5,35.875"
+                    Point3="158.5,39.875" />
                   <mssgle:LineSegment
-                    End="-250.5,26.25" />
+                    End="158.5,64.25" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3534,30 +3534,30 @@ namespace ST_231a69c233f842a39d0e227465cc132a.csproj.Properties
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Processing.PrecedenceConstraints[Constraint 1]"
-          TopLeft="230.25,147.25">
+          TopLeft="514.25,167.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="170.25,94"
+              EndConnector="-113.75,74"
               Start="0,0"
-              End="170.25,86.5">
+              End="-113.75,66.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,43" />
+                    End="0,33" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,43"
-                    Point2="0,47"
-                    Point3="4,47" />
+                    Point1="0,33"
+                    Point2="0,37"
+                    Point3="-4,37" />
                   <mssgle:LineSegment
-                    End="166.25,47" />
+                    End="-109.75,37" />
                   <mssgle:CubicBezierSegment
-                    Point1="166.25,47"
-                    Point2="170.25,47"
-                    Point3="170.25,51" />
+                    Point1="-109.75,37"
+                    Point2="-113.75,37"
+                    Point3="-113.75,41" />
                   <mssgle:LineSegment
-                    End="170.25,86.5" />
+                    End="-113.75,66.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
