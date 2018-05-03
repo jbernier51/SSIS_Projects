@@ -1,3 +1,0 @@
-﻿CREATE SCHEMA [Harsco]
-    AUTHORIZATION [dbo];
-
