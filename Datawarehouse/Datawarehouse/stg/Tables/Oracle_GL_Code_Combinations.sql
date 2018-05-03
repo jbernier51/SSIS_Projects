@@ -1,0 +1,25 @@
+﻿CREATE TABLE [stg].[Oracle_GL_Code_Combinations] (
+    [CODE_COMBINATION_ID]  NUMERIC (15)   NULL,
+    [SEGMENT1]             NVARCHAR (25)  NULL,
+    [SEGMENT2]             NVARCHAR (25)  NULL,
+    [SEGMENT3]             NVARCHAR (25)  NULL,
+    [SEGMENT4]             NVARCHAR (25)  NULL,
+    [SEGMENT5]             NVARCHAR (25)  NULL,
+    [SEGMENT6]             NVARCHAR (25)  NULL,
+    [SEGMENT7]             NVARCHAR (25)  NULL,
+    [SEGMENT8]             NVARCHAR (25)  NULL,
+    [SEGMENT1_DESC]        NVARCHAR (160) NULL,
+    [SEGMENT2_DESC]        NVARCHAR (160) NULL,
+    [SEGMENT3_DESC]        NVARCHAR (160) NULL,
+    [SEGMENT4_DESC]        NVARCHAR (160) NULL,
+    [SEGMENT5_DESC]        NVARCHAR (160) NULL,
+    [SEGMENT6_DESC]        NVARCHAR (160) NULL,
+    [SEGMENT7_DESC]        NVARCHAR (160) NULL,
+    [SEGMENT8_DESC]        NVARCHAR (160) NULL,
+    [CHART_OF_ACCOUNTS_ID] NUMERIC (15)   NULL,
+    [ACCOUNT_TYPE]         NVARCHAR (1)   NULL,
+    [LineageTMST]          DATETIME       NULL,
+    [UpdatedLineageString] VARCHAR (128)  NULL,
+    [SourceSystemID]       VARCHAR (128)  NULL
+);
+

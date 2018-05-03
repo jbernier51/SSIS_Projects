@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Datawarehouse</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{6fe5ee1e-ebd9-4e03-97f8-50a06eaab6ba}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Datawarehouse</RootNamespace>
+    <AssemblyName>Datawarehouse</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="stg\" />
+    <Folder Include="stg\Tables\" />
+    <Folder Include="Harsco\" />
+    <Folder Include="Harsco\Tables\" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="Harsco\Views\" />
+    <Folder Include="Security\" />
+    <Folder Include="dbo\Stored Procedures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="stg\Tables\JDE_F0014.sql" />
+    <Build Include="stg\Tables\Oracle_ARAdjustments.sql" />
+    <Build Include="stg\Tables\JDE_F1202.sql" />
+    <Build Include="stg\Tables\Oracle_Security.sql" />
+    <Build Include="stg\Tables\Oracle_GL_Code_Combinations_dgl.sql" />
+    <Build Include="stg\Tables\Oracle_SECURITY_FLEX_ENTITY.sql" />
+    <Build Include="stg\Tables\Oracle_GL_Code_Combinations_kfv.sql" />
+    <Build Include="Harsco\Tables\FactARAging.sql" />
+    <Build Include="stg\Tables\FlatFile_AgingTest.sql" />
+    <Build Include="stg\Tables\Oracle_ARReceipts.sql" />
+    <Build Include="stg\Tables\Oracle_HZ_CUST_PROFILE_AMTS.sql" />
+    <Build Include="stg\Tables\Oracle_SECURITY_INV_ORG.sql" />
+    <Build Include="stg\Tables\Oracle_RA_Customer_TRX_ALL.sql" />
+    <Build Include="stg\Tables\JDE_F03012.sql" />
+    <Build Include="stg\Tables\FlatFile_RecordCountsCombinedCSV.sql" />
+    <Build Include="stg\Tables\Oracle_mtl_parameters.sql" />
+    <Build Include="stg\Tables\Oracle_GL_SETS_OF_BOOKS.sql" />
+    <Build Include="stg\Tables\JDE_F0901.sql" />
+    <Build Include="stg\Tables\JDE_Organization.sql" />
+    <Build Include="stg\Tables\ReceiptsBackup.sql" />
+    <Build Include="stg\Tables\Oracle_HZ_CUST_ACCOUNTS.sql" />
+    <Build Include="stg\Tables\JDE_F0101.sql" />
+    <Build Include="stg\Tables\Oracle_SECURITY_FLEX_LOCATION.sql" />
+    <Build Include="stg\Tables\JDE_F0006.sql" />
+    <Build Include="stg\Tables\Oracle_HZ_PARTIES.sql" />
+    <Build Include="stg\Tables\FlatFile_JDELibrary.sql" />
+    <Build Include="stg\Tables\Oracle_RA_Terms.sql" />
+    <Build Include="stg\Tables\JDE_F0010.sql" />
+    <Build Include="stg\Tables\FlatFile_SecurityOverride.sql" />
+    <Build Include="stg\Tables\Oracle_GL_Daily_Rates.sql" />
+    <Build Include="stg\Tables\FlatFile_UserMasterCSV.sql" />
+    <Build Include="stg\Tables\JDELibrary.sql" />
+    <Build Include="stg\Tables\Oracle_AR_Sales_Order_No.sql" />
+    <Build Include="stg\Tables\JDE_F0301.sql" />
+    <Build Include="stg\Tables\JDE_ARInvoices.sql" />
+    <Build Include="stg\Tables\Oracle_HZ_CUST_SITE_USES_ALL.sql" />
+    <Build Include="stg\Tables\Oracle_GL_Code_Combinations.sql" />
+    <Build Include="stg\Tables\Oracle_HZ_CUST_PROFILE_CLASSES.sql" />
+    <Build Include="stg\Tables\Oracle_AST_Notes.sql" />
+    <Build Include="stg\Tables\Oracle_HZ_CUST_ACCT_SITES_ALL.sql" />
+    <Build Include="stg\Tables\Oracle_HZ_PARTY_SITES.sql" />
+    <Build Include="stg\Tables\Oracle_ARInvoices.sql" />
+    <Build Include="dbo\Tables\sysssislog.sql" />
+    <Build Include="dbo\Tables\Staging Destination.sql" />
+    <Build Include="stg\Tables\JDE_F4801.sql" />
+    <Build Include="stg\Tables\JDE_F1201.sql" />
+    <Build Include="stg\Tables\JDE_F1207.sql" />
+    <Build Include="Harsco\Tables\DimDate.sql" />
+    <Build Include="Harsco\Tables\DimCustomerLocation.sql" />
+    <Build Include="Harsco\Tables\FactCustomerNotes.sql" />
+    <Build Include="Harsco\Tables\DimOrganization.sql" />
+    <Build Include="Harsco\Tables\DimCustomer.sql" />
+    <Build Include="Harsco\Tables\LKPUserSecurity.sql" />
+    <Build Include="Harsco\Tables\FactARInvoices.sql" />
+    <Build Include="Harsco\Tables\DimPaymentTerms.sql" />
+    <Build Include="Harsco\Tables\FactARReceipts.sql" />
+    <Build Include="Harsco\Tables\FactARAdjustments.sql" />
+    <Build Include="Harsco\Tables\FactARProjections.sql" />
+    <Build Include="Harsco\Tables\DimCurrency.sql" />
+    <Build Include="Harsco\Tables\LKPExchangeRate.sql" />
+    <Build Include="stg\Tables\FlatFile_FinanceLocationsCSV.sql" />
+    <Build Include="stg\Tables\Oracle_HZ_CUSTOMER_PROFILES.sql" />
+    <Build Include="stg\Tables\JDE_ARReceipts.sql" />
+    <Build Include="stg\Tables\FlatFile_JDE_ORACLE_ORG_MAPPINGCSV.sql" />
+    <Build Include="stg\Tables\Oracle_HZ_CUST_ACCT_SITE_USES_ALL.sql" />
+    <Build Include="stg\Tables\Oracle_HZ_LOCATIONS.sql" />
+    <Build Include="Harsco\Views\vDimDateARInvoices.sql" />
+    <Build Include="Harsco\Views\vDimDateARReceipts.sql" />
+    <Build Include="Harsco\Views\vDimDateARDueDate.sql" />
+    <Build Include="Harsco\Views\vDimDateCustomerNotes.sql" />
+    <Build Include="Harsco\Views\vDimDateAsOf.sql" />
+    <Build Include="Harsco\Views\FactARAging_Aggr1.sql" />
+    <Build Include="Harsco\Views\vFactARInvoices.sql" />
+    <Build Include="Harsco\Views\vCountryCodes.sql" />
+    <Build Include="Harsco\Views\vLKPExchRateProjection.sql" />
+    <Build Include="Harsco\Views\vLKPCustomerCntryNA.sql" />
+    <Build Include="Harsco\Views\vLKPJDESourceSystemLibraries.sql" />
+    <Build Include="Harsco\Views\vOpenAmountsPastDue30.sql" />
+    <Build Include="Harsco\Views\vMeasureFormat.sql" />
+    <Build Include="Harsco\Views\vCustomerNoteInvoiceM2M.sql" />
+    <Build Include="Harsco\Views\vCountries.sql" />
+    <Build Include="Harsco\Views\vLKPExchangeRate.sql" />
+    <Build Include="Harsco\Views\vFactARInvoiceSummary.sql" />
+    <Build Include="Harsco\Views\vLKPExchangeRateToday.sql" />
+    <Build Include="Harsco\Views\vLKPExchangeRateAging.sql" />
+    <Build Include="Harsco\Views\vFactARReceipts.sql" />
+    <Build Include="Harsco\Views\vLKPSourceSystem_OLD.sql" />
+    <Build Include="Harsco\Views\vDimOrganization.sql" />
+    <Build Include="Harsco\Views\vDimDate.sql" />
+    <Build Include="Harsco\Views\vLKPJDELibraries.sql" />
+    <Build Include="Harsco\Views\vDimDateProjections.sql" />
+    <Build Include="Harsco\Views\vAgingBuckets.sql" />
+    <Build Include="Harsco\Views\vFactARAging.sql" />
+    <Build Include="Harsco\Views\vLKPCurrencyPrompt.sql" />
+    <Build Include="Harsco\Views\FactARAging_Aggr.sql" />
+    <Build Include="Harsco\Views\vDimActiveCustomer.sql" />
+    <Build Include="Security\HarscoDBUser.sql" />
+    <Build Include="Security\HarscoDBUser_1.sql" />
+    <Build Include="Security\jbernier.sql" />
+    <Build Include="Security\JBernier_1.sql" />
+    <Build Include="Security\shankey.sql" />
+    <Build Include="Security\SHankey_1.sql" />
+    <Build Include="Security\awisdom.sql" />
+    <Build Include="Security\awisdom_1.sql" />
+    <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="dbo\Stored Procedures\MergeFactARInvoices.sql" />
+    <Build Include="dbo\Stored Procedures\MergeFactARging.sql" />
+    <Build Include="dbo\Stored Procedures\MergeDimCustomerLocation.sql" />
+    <Build Include="dbo\Stored Procedures\RunDWLoad.sql" />
+    <Build Include="dbo\Stored Procedures\StoredProcedureTemplate.sql" />
+    <Build Include="dbo\Stored Procedures\SSISSysLogMaintenance.sql" />
+    <Build Include="dbo\Stored Procedures\sp_ssis_addlogentry.sql" />
+    <Build Include="dbo\Stored Procedures\RunDWTruncate.sql" />
+    <Build Include="dbo\Stored Procedures\MergeLkpExchangeRate BACKUP.sql" />
+    <Build Include="dbo\Stored Procedures\MergeLkpExchangeRate.sql" />
+    <Build Include="dbo\Stored Procedures\MergeFactCustomerNotes.sql" />
+    <Build Include="dbo\Stored Procedures\MergeFactARReceipts.sql" />
+    <Build Include="dbo\Stored Procedures\MergeFactARAdjustments.sql" />
+    <Build Include="dbo\Stored Procedures\MergeFactARProjection.sql" />
+    <Build Include="dbo\Stored Procedures\MergeDimPaymentTerms.sql" />
+    <Build Include="dbo\Stored Procedures\MergeDimOrganization.sql" />
+    <Build Include="dbo\Stored Procedures\MergeDimCustomer.sql" />
+    <Build Include="dbo\Stored Procedures\CreateNumberList.sql" />
+    <Build Include="dbo\Stored Procedures\CreateDimensionUnknownRowCustNote.sql" />
+    <Build Include="dbo\Stored Procedures\CreateDimensionUnknownRow.sql" />
+    <Build Include="dbo\Stored Procedures\CreateDimDateData.sql" />
+    <Build Include="Security\https___harscosqldbauditlog.blob.core.windows.net_sqldbauditlogs.sql" />
+    <Build Include="Security\External_Credential.sql" />
+    <Build Include="Security\External.sql" />
+    <Build Include="Security\Harsco.sql" />
+    <Build Include="Security\stg.sql" />
+  </ItemGroup>
+</Project>
